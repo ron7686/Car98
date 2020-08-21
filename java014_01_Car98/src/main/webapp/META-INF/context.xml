@@ -3,10 +3,10 @@
 	path="/example" reloadable="true">
 
 	<!-- MySQL(範例程式會用到的DataSource) -->
-	<Resource name="jdbc/MemberDB" type="javax.sql.DataSource" 
-		username="root" password="1qaz@WSX"
+	<Resource name="jdbc/CarDB" type="javax.sql.DataSource" 
+		username="root" password="Do!ng123"
 		driverClassName="com.mysql.cj.jdbc.Driver" 
-		url="jdbc:mysql:///jspdb"
+		url="jdbc:mysql:///Car98"
 		connectionProperties=
 		"useUnicode=yes;characterEncoding=utf8;useSSL=false;serverTimezone=Asia/Taipei"
 		maxTotal="5" 
