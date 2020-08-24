@@ -24,7 +24,7 @@ public class SystemUtils {
 				ByteArrayOutputStream baos = new ByteArrayOutputStream();
 				){
 				int len =0;
-				byte[] b = new byte [512];
+				byte[] b = new byte [8192];
 				while((len=bfi.read(b))!=-1) {
 					baos.write(b, 0, len);
 				}
@@ -52,7 +52,7 @@ public class SystemUtils {
 				CharArrayWriter caw = new CharArrayWriter();
 				){
 				int len =0;
-				char[] c = new char [512];
+				char[] c = new char [8192];
 				while((len=bir.read(c))!=-1) {
 					caw.write(c, 0, len);
 				}

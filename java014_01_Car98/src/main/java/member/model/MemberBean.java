@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class MemberBean implements Serializable{
 	private static final long serialVersionUID = 1L;
-	private Integer custId;
+	private Integer memId;
 	private String id;
 	private String email;
 	private String password;
@@ -16,16 +16,18 @@ public class MemberBean implements Serializable{
 	private String sex;
 	private Blob headPic;
 	private Integer levels;
+	private java.util.Date meCreate;
+	private java.util.Date loginTime;
 
 	public MemberBean() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public MemberBean(Integer custId, String id, String email, String password, String name, String phone, Date birth,
+	public MemberBean(Integer memId, String id, String email, String password, String name, String phone, Date birth,
 			String sex, Blob headPic, Integer levels) {
 		super();
-		this.custId = custId;
+		this.memId = memId;
 		this.id = id;
 		this.email = email;
 		this.password = password;
@@ -37,12 +39,12 @@ public class MemberBean implements Serializable{
 		this.levels = levels;
 	}
 
-	public Integer getCustId() {
-		return custId;
+	public Integer getMemId() {
+		return memId;
 	}
 
-	public void setCustId(Integer custId) {
-		this.custId = custId;
+	public void setMemId(Integer memId) {
+		this.memId = memId;
 	}
 
 	public String getId() {
@@ -116,12 +118,30 @@ public class MemberBean implements Serializable{
 	public void setLevels(Integer levels) {
 		this.levels = levels;
 	}
+	
+	
+
+	public java.util.Date getMeCreate() {
+		return meCreate;
+	}
+
+	public void setMeCreate(java.util.Date meCreate) {
+		this.meCreate = meCreate;
+	}
+
+	public java.util.Date getLoginTime() {
+		return loginTime;
+	}
+
+	public void setLoginTime(java.util.Date loginTime) {
+		this.loginTime = loginTime;
+	}
 
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Member [custId=");
-		builder.append(custId);
+		builder.append("Member [memId=");
+		builder.append(memId);
 		builder.append(", id=");
 		builder.append(id);
 		builder.append(", email=");
@@ -140,6 +160,10 @@ public class MemberBean implements Serializable{
 		builder.append(headPic);
 		builder.append(", levels=");
 		builder.append(levels);
+		builder.append(", meCreate=");
+		builder.append(meCreate);
+		builder.append(", loginTime=");
+		builder.append(loginTime);
 		builder.append("]");
 		return builder.toString();
 	}
