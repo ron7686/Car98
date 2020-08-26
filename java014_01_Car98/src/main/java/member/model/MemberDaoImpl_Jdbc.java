@@ -14,7 +14,8 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 public class MemberDaoImpl_Jdbc implements MemberDao {
-	DataSource ds = null;
+	private DataSource ds = null;
+	private Connection con = null;
 	public MemberDaoImpl_Jdbc(String driver) {
 		try {
 			Context context = new InitialContext();
@@ -26,8 +27,8 @@ public class MemberDaoImpl_Jdbc implements MemberDao {
 	
 	private static final String SELECT_BY_ID = "select Memid, id, email, password, "
 												+ "name, phone, birth, sex, headPic, leves,"
-												+ "MeCreate, LoginTime"
-												+ "from member where Memid=?";
+												+ "MeCreate, LoginTime "
+												+ "from mem where Memid=?";
 	@Override
 	public MemberBean queryMember(String id) {
 		MemberBean mb = null;
@@ -36,7 +37,7 @@ public class MemberDaoImpl_Jdbc implements MemberDao {
 				PreparedStatement stmt = conn.prepareStatement(SELECT_BY_ID);
 			)
 		{
-			stmt.setString(0, id);
+			stmt.setString(1, id);
 			try(
 					ResultSet rs = stmt.executeQuery(); 
 			){
@@ -51,8 +52,9 @@ public class MemberDaoImpl_Jdbc implements MemberDao {
 					mb.setBirth(rs.getDate("Birth"));
 					mb.setSex(rs.getString("sex"));
 					mb.setHeadPic(rs.getBlob("HeadPic"));
-					mb.setPassword(rs.getString("password"));
-					mb.setLevels(rs.getInt("Levels"));
+//					mb.setLevels(rs.getInt("Levels"));
+//					mb.setMeCreate(rs.getDate("MeCreate"));
+//					mb.setLoginTime(rs.getTimestamp("LoginTime"));
 				}
 			}
 		}
@@ -62,8 +64,9 @@ public class MemberDaoImpl_Jdbc implements MemberDao {
 		return mb;
 	}
 	private static final String select_All = "select custId, id, email, password, "
-											+ "name, phone, birth, sex, mheadPic, leves"
-											+ "from member where custId=?";
+											+ "name, phone, birth, sex, mheadPic, leves, "
+											+ "MeCreate, LoginTime "
+											+ "from mem where custId=?";
 	public List<MemberBean> selectAll() {
 		List <MemberBean> selectAll = new ArrayList<>();
 		try(
@@ -83,8 +86,9 @@ public class MemberDaoImpl_Jdbc implements MemberDao {
 				result.setBirth(rs.getDate("Birth"));
 				result.setSex(rs.getString("sex"));
 				result.setHeadPic(rs.getBlob("HeadPic"));
-				result.setPassword(rs.getString("password"));
-				result.setLevels(rs.getInt("Levels"));
+//				result.setLevels(rs.getInt("Levels"));
+//				result.setMeCreate(rs.getDate("MeCreate"));
+//				result.setLoginTime(rs.getTimestamp("LoginTime"));
 				selectAll.add(result);
 			}
 			
@@ -94,42 +98,33 @@ public class MemberDaoImpl_Jdbc implements MemberDao {
 		return selectAll;
 	}
 	
-	private static final String INSERT = "Insert into member "
-			+ "(CustID, ID, Email, Password, Name, Phone, Birth, Sex, HeadPic, Levels) "
-			+ "values (0, ?, ?, ?, ?, ?, ?, ?, ?, 1)";
+	private static final String INSERT = "INSERT INTO mem (MemId, ID, Email, PASSWORD, NAME, Phone, Birth, Sex, HeadPic, Levels,MeCreate,LoginTime)\r\n" + 
+			"VALUES (0, ?, ?, ?, ?, ?, ?, ?, ?, 2, CURDATE(),NOW())";
 
-	public MemberBean insertMember(MemberBean bean) throws SQLException {
-		MemberBean result = null;
+	public int saveMember(MemberBean bean)  {
+		int n = 0;
 		try(
 			Connection conn = ds.getConnection();
-			PreparedStatement stmt = conn.prepareStatement(INSERT);
+			PreparedStatement ps = conn.prepareStatement(INSERT);
 		) {
-			stmt.setString(1, bean.getId());
-			stmt.setString(2, bean.getEmail());
-			stmt.setString(3, bean.getPassword());
-			stmt.setString(4, bean.getName());
-			stmt.setString(5, bean.getPhone());
-
-
-			java.util.Date temp = bean.getBirth();
-			if (temp != null) {
-				java.sql.Date someTime = new java.sql.Date(temp.getTime());
-				stmt.setDate(5, someTime);
-			} else {
-				stmt.setDate(5, null);
-			}
-			stmt.setString(6, bean.getSex());
-			Blob b = bean.getHeadPic();
-			if(b!=null) {
-				stmt.setBlob(7, bean.getHeadPic());
-			}else {
-				Blob blobNull = null;
-				stmt.setBlob(7, blobNull);
-			}
-
-			stmt.setInt(8, bean.getLevels());
-		} 
-		return result;
+			ps.setString(1, bean.getId());
+			ps.setString(2, bean.getEmail());
+			ps.setString(3, bean.getPassword());
+			ps.setString(4, bean.getName());
+			ps.setString(5, bean.getPhone());
+			ps.setDate(6, bean.getBirth());
+			ps.setString(7, bean.getSex());
+			ps.setBlob(8, bean.getHeadPic());
+//			ps.setInt(9, bean.getLevels());
+//			ps.setDate(10, bean.getMeCreate());
+//			ps.setTimestamp(11, bean.getLoginTime());
+			n = ps.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException("MemberDaoImpl_Jdbc類別#saveMember()發生例外:"
+			+e.getMessage());
+		}
+		return n;
 	}
 
 	@Override
@@ -159,21 +154,46 @@ public class MemberDaoImpl_Jdbc implements MemberDao {
 	}
 
 	@Override
-	public int saveMember(MemberBean mb) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public MemberBean checkIdPassword(String userId, String password) {
+	public MemberBean checkIdPassword(String email, String password) {
 		MemberBean mb = null;
-		String sql ="select * from mem where ";
-		return null;
+		String sql ="select * from mem where email = ? and password = ?";
+		try(
+			Connection conn =ds.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			){
+			ps.setString(1,email);
+			ps.setString(2, password);
+			try(
+					ResultSet rs = ps.executeQuery();
+				){
+				if(rs.next()) {
+					mb = new MemberBean();
+					mb.setMemId(rs.getInt("memId"));
+					mb.setMemId(rs.getInt("custid"));
+					mb.setId(rs.getString("id"));
+					mb.setEmail(rs.getString("Email"));
+					mb.setPassword(rs.getString("password"));
+					mb.setName(rs.getString("name"));
+					mb.setPhone(rs.getString("phone"));
+					mb.setBirth(rs.getDate("Birth"));
+					mb.setSex(rs.getString("sex"));
+					mb.setHeadPic(rs.getBlob("HeadPic"));
+//					mb.setLevels(rs.getInt("Levels"));
+//					mb.setMeCreate(rs.getDate("MeCreate"));
+//					mb.setLoginTime(rs.getTimestamp("LoginTime"));
+				}
+				
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException("MemberDaoImpl_Jdbc類別#checkIDPassword()發生SQL例外: " 
+					+ e.getMessage());
+		}
+		return mb;
 	}
 
 	@Override
 	public void setConnection(Connection con) {
-		// TODO Auto-generated method stub
-		
+		this.con = con;
 	}
 }

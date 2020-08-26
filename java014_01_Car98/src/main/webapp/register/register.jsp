@@ -50,50 +50,59 @@ input[type="submit"]:disabled {
 
 <body class="bg-dark">
 	<jsp:include page="../fragment/topIndex.jsp"></jsp:include>
-	<form class="needs-validation mx-5 text-white" novalidate>
-		<div class="form-row my-5">
+	<form class="needs-validation mx-5 text-white" novalidate method="post"
+		action="/java014_01_Car98/member/register.do">
+		<div class="form-row my-5 w-50">
 			<div class="col-md-4 mt-5 mb-2">
 				<label for="validationCustom01">姓名: </label> <input type="text"
-					class="form-control" value="${param.memberName}"
+					class="form-control" value="${param.memberName}" name="memberName"
 					id="validationCustom01" placeholder="姓名" required>
 				<div class="invalid-feedback">請輸入姓名</div>
 
 			</div>
 			<div class="col-md-4 mt-5 mb-2">
 				<label for="validationCustom02">暱稱: </label> <input type="text"
-					class="form-control w-auto" value="${param.memberId}"
+					class="form-control w-auto" value="${param.memberId}" name="memberId"
 					id="validationCustom02" placeholder="暱稱" required>
 				<div class="invalid-feedback">請輸入暱稱</div>
 			</div>
+
+		</div>
+		<div class="form-group w-50 mb-5">
+				<label for="validationCustom02">手機號碼: </label> <input type="tel"
+					class="form-control w-auto" value="${param.memberPhone}" name="memberPhone"
+					id="validationCustom02" placeholder="手機號碼" pattern="[0-9]{4}[0-9]{3}[0-9]{3}" required>
+				<div class="invalid-feedback">請輸入正確的號/碼</div>
 		</div>
 		<div class="form-group w-50">
 			<label for="exampleInputEmail1">Email address: </label> <input
 				type="email" class="form-control" id="exampleInputEmail1"
-				value="${param.memberEmail}" aria-describedby="emailHelp"
+				value="${param.memberEmail}" name="memberEmail" aria-describedby="emailHelp"
 				placeholder="Enter email"
 				pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" required>
 			<small id="emailHelp" class="form-text text-muted">We'll
 				never share your email with anyone else.</small>
 			<div class="invalid-feedback">請輸入正確的email</div>
 		</div>
+		
 		<div class="form-row d-inline">
 			<div class="col-md-6 mb-2">
-				<label for="validationCustom03">生日: </label> <input type="date"
-					class="form-control" id="validationCustom03"
-					value="${param.memberBirth}" placeholder="" required>
+				<label for="validationCustom03">生日: </label> <input type="text"
+					class="form-control" id="validationCustom03" name = "memberBirth"
+					value="${param.memberBirth}" placeholder="YYYY-MM-DD" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" required>
 				<div class="invalid-feedback">請選擇日期</div>
 			</div>
 			<div class="col-md-3 mb-2">
 				<label for="validationCustom04">性別: </label>
 				<div class="form-check form-check-inline">
 					<input class="form-check-input" type="radio" name="gridRadios"
-						id="gridRadios1" value="${param.memberSex1}" checked> <label
+						id="gridRadios1" value="M" checked> <label
 						class="form-check-label text-primary" for="gridRadios1"> 男
 					</label>
 				</div>
 				<div class="form-check form-check-inline">
 					<input class="form-check-input" type="radio" name="gridRadios"
-						id="gridRadios2" value="${param.memberSex2}"> <label
+						id="gridRadios2" value="F"> <label
 						class="form-check-label text-danger" for="gridRadios2"> 女
 					</label>
 				</div>
@@ -104,7 +113,7 @@ input[type="submit"]:disabled {
 			<div class="form-group">
 				<label for="exampleFormControlFile1">上傳頭像: </label> <input
 					type="file" class="form-control-file" id="exampleFormControlFile1"
-					value="${param.memberHeadPic}">
+					value="${param.memberHeadPic}" name="memberHeadPic" >
 			</div>
 		</div>
 
@@ -117,7 +126,7 @@ input[type="submit"]:disabled {
 		<div class="form-group w-50 p-2">
 			確認密碼 <input type="text" id="cPwdId" class="form-control myCpwdClass"
 				pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
-				value="${param.memberPassword}" required>
+				value="${param.memberPassword}" name="memberPassword" required>
 			<div id="cPwdValid" class="valid-feedback">密碼相符</div>
 			<div id="cPwdInvalid" class="invalid-feedback">密碼不相同</div>
 		</div>
@@ -150,6 +159,7 @@ input[type="submit"]:disabled {
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
 		integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
 		crossorigin="anonymous"></script>
+		
 </body>
 
 </html>

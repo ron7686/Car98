@@ -1,33 +1,43 @@
 package member.controller;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.sql.Blob;
-import java.sql.SQLException;
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.sql.rowset.serial.SerialBlob;
-import javax.sql.rowset.serial.SerialException;
+import javax.servlet.http.Part;
 
-import member.model.*;
+import member.model.MemberBean;
+import member.model.MemberService;
+import member.model.MemberServiceImpl;
 
-@WebServlet(urlPatterns="/member/controller/MemberServlet",
+@MultipartConfig(location="", fileSizeThreshold = 5 * 1024 * 1024,
+			maxFileSize= 1024 * 1024 * 500, maxRequestSize= 1024 *1024 *500 *5)
+
+@WebServlet(urlPatterns="/member/register.do",
 			initParams= {
 					@WebInitParam(
 							name="driver",
-							value="java:comp/env/jdbc/Car98")
+							value="java:comp/env/jdbc/CarDB")
 			})
 public class MemberServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
     String dbDriver = null;   
     public MemberServlet() {
         super();
@@ -40,85 +50,61 @@ public class MemberServlet extends HttpServlet {
     
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8"); // 文字資料轉內碼
+		// 準備存放錯誤訊息的Map物件
+		Map<String, String> errorMsg = new HashMap<String, String>();
+		// 準備存放註冊成功之訊息的Map物件
+		Map<String, String> msgOK = new HashMap<String, String>();
+		// 註冊成功後將用response.sendRedirect()導向新的畫面，所以需要
+		// session物件來存放共用資料。
 		HttpSession session = request.getSession();
-		Map <String,String> ErrorMap = new HashMap<>();
-		session.setAttribute("ErrorMessage",ErrorMap);
+		request.setAttribute("MsgMap", errorMsg); // 顯示錯誤訊息
+		session.setAttribute("MsgOK", msgOK); // 顯示正常訊息
+
+		String memberId = "";
+		String name = "";
+		String email = "";
+		String password = "";
+		String phone = "";
+		String sex = "";
+		long sizeInBytes = 0;
 		
-		request.setCharacterEncoding("UTF-8");
+		memberId = request.getParameter("memberId");
+		email = request.getParameter("memberEmail");
+		password = request.getParameter("memberPassword");
+		name = request.getParameter("memberName");
+		phone = request.getParameter("memberPhone");
 		
-		
-		String id = request.getParameter("id");
-		if(id==null || id.trim().length() == 0) {
-			String idError = "請輸入暱稱";
-			ErrorMap.put("idError",idError);
-		}
-		
-		String email = request.getParameter("Email");
-		if(email==null||email.trim().length()==0) {
-			String emailError = "請輸入email(帳號)";
-			ErrorMap.put("emailError",emailError);
-		}
-		
-		String password = request.getParameter("password");
-		if (password == null || password.trim().length() == 0) {
-			ErrorMap.put("passwordError", "密碼欄必須輸入");
-		}
-		
-		String name = request.getParameter("name");
-		if(name==null || name.trim().length()==0) {
-			String nameError = "請輸入姓名";
-			ErrorMap.put("nameError",nameError);
-		}
-		
-		String phone = request.getParameter("phone");
-		if(phone ==null||phone.trim().length()==0) {
-			String phoneError = "請輸入電話號碼";
-			ErrorMap.put("phoneError",phoneError);
-		}
-		
-		String date = request.getParameter("birth");
-		java.util.Date birth = null;
+		String date = request.getParameter("memberBirth");
+		Date birth = null;
 		if(date != null && date.trim().length() > 0) {
 			try {
-				birth = java.sql.Date.valueOf(date);
+				birth = Date.valueOf(date);
 			} catch (Exception e) {
-				ErrorMap.put("birthError","生日格式錯誤");
+				e.printStackTrace();
 			}
 		}
+		sex = request.getParameter("gridRadios");
+		Blob blob = null;
 		
-		String sex = request.getParameter("sex");
-		if(sex ==null && sex.trim().length()==0) {
-			String sexError = "請輸入性別";
-			ErrorMap.put("sexError", sexError);
-		}
-		Blob headPic = null;
-		String headPictemp = request.getParameter("headPic");
-		try {
-			headPic = new SerialBlob(headPictemp.getBytes("UTF-8"));
-		} catch (SerialException e) {
-			e.printStackTrace();
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
 		
-		String leveltemp = request.getParameter("levels");
-		Integer levels = Integer.parseInt(leveltemp.trim());
+				MemberService service = new MemberServiceImpl(dbDriver);
+				MemberBean mem = new MemberBean(0, memberId,email,password,name,
+						phone, birth,sex, blob);
+				// 呼叫MemberDao的saveMember方法
+				int n = service.saveMember(mem);
+				if (n == 1) {
+					msgOK.put("InsertOK", "<Font color='red'>新增成功，請開始使用本系統</Font>");
+					response.sendRedirect("../index.jsp");
+					return;
+				}
+			// 5.依照 Business Logic 運算結果來挑選適當的畫面
+			if (!errorMsg.isEmpty()) {
+				// 導向原來輸入資料的畫面，這次會顯示錯誤訊息
+				RequestDispatcher rd = request.getRequestDispatcher("register.jsp");
+				rd.forward(request, response);
+				return;
+			}
 		
-		if (!ErrorMap.isEmpty()) {
-			RequestDispatcher rd = request.getRequestDispatcher("???");
-			rd.forward(request, response);
-			return;
-		}
-		
-		MemberBean mb = new MemberBean(0, id, email, password, 
-				name, phone, birth, sex, headPic, levels);
-		try {
-			MemberService service = new MemberService(dbDriver);
-			service.select();
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
 	}
 }

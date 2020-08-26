@@ -2,7 +2,8 @@ package member.model;
 
 import java.io.Serializable;
 import java.sql.Blob;
-import java.util.Date;
+import java.sql.Date;
+import java.sql.Timestamp;
 
 public class MemberBean implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -12,12 +13,12 @@ public class MemberBean implements Serializable{
 	private String password;
 	private String name;
 	private String phone;
-	private java.util.Date birth;
+	private Date birth;
 	private String sex;
 	private Blob headPic;
 	private Integer levels;
-	private java.util.Date meCreate;
-	private java.util.Date loginTime;
+	private Date meCreate;
+	private Timestamp loginTime;
 
 	public MemberBean() {
 		super();
@@ -25,7 +26,7 @@ public class MemberBean implements Serializable{
 	}
 
 	public MemberBean(Integer memId, String id, String email, String password, String name, String phone, Date birth,
-			String sex, Blob headPic, Integer levels) {
+			String sex, Blob headPic/*, Integer levels, Date meCreate,Timestamp loginTime*/) {
 		super();
 		this.memId = memId;
 		this.id = id;
@@ -36,7 +37,9 @@ public class MemberBean implements Serializable{
 		this.birth = birth;
 		this.sex = sex;
 		this.headPic = headPic;
-		this.levels = levels;
+		/*this.levels = levels;
+		this.meCreate = meCreate;
+		this.loginTime = loginTime;*/
 	}
 
 	public Integer getMemId() {
@@ -87,11 +90,11 @@ public class MemberBean implements Serializable{
 		this.phone = phone;
 	}
 
-	public java.util.Date getBirth() {
+	public Date getBirth() {
 		return birth;
 	}
 
-	public void setBirth(java.util.Date birth) {
+	public void setBirth(Date birth) {
 		this.birth = birth;
 	}
 
@@ -121,19 +124,19 @@ public class MemberBean implements Serializable{
 	
 	
 
-	public java.util.Date getMeCreate() {
+	public Date getMeCreate() {
 		return meCreate;
 	}
 
-	public void setMeCreate(java.util.Date meCreate) {
+	public void setMeCreate(Date meCreate) {
 		this.meCreate = meCreate;
 	}
 
-	public java.util.Date getLoginTime() {
+	public Timestamp getLoginTime() {
 		return loginTime;
 	}
 
-	public void setLoginTime(java.util.Date loginTime) {
+	public void setLoginTime(Timestamp loginTime) {
 		this.loginTime = loginTime;
 	}
 
