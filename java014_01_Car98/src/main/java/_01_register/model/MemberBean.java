@@ -1,45 +1,44 @@
-package member.model;
+﻿package _01_register.model;
 
 import java.io.Serializable;
 import java.sql.Blob;
 import java.sql.Date;
-import java.sql.Timestamp;
 
-public class MemberBean implements Serializable{
+public class MemberBean implements Serializable {
 	private static final long serialVersionUID = 1L;
+
 	private Integer memId;
-	private String id;
 	private String email;
 	private String password;
 	private String name;
+	private String id;
 	private String phone;
 	private Date birth;
 	private String sex;
 	private Blob headPic;
+	private String fileName;
 	private Integer levels;
 	private Date meCreate;
-	private Timestamp loginTime;
+	private Date loginTime;
 
+	
 	public MemberBean() {
-		super();
-		// TODO Auto-generated constructor stub
+		
 	}
-
-	public MemberBean(Integer memId, String id, String email, String password, String name, String phone, Date birth,
-			String sex, Blob headPic/*, Integer levels, Date meCreate,Timestamp loginTime*/) {
+	
+	public MemberBean(Integer memId, String email, String password, String name, String id, String phone, Date birth,
+			String sex, Blob headPic, String fileName) {
 		super();
 		this.memId = memId;
-		this.id = id;
 		this.email = email;
 		this.password = password;
 		this.name = name;
+		this.id = id;
 		this.phone = phone;
 		this.birth = birth;
 		this.sex = sex;
 		this.headPic = headPic;
-		/*this.levels = levels;
-		this.meCreate = meCreate;
-		this.loginTime = loginTime;*/
+		this.fileName = fileName;
 	}
 
 	public Integer getMemId() {
@@ -48,14 +47,6 @@ public class MemberBean implements Serializable{
 
 	public void setMemId(Integer memId) {
 		this.memId = memId;
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
 	}
 
 	public String getEmail() {
@@ -80,6 +71,14 @@ public class MemberBean implements Serializable{
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getPhone() {
@@ -114,6 +113,14 @@ public class MemberBean implements Serializable{
 		this.headPic = headPic;
 	}
 
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
 	public Integer getLevels() {
 		return levels;
 	}
@@ -121,8 +128,6 @@ public class MemberBean implements Serializable{
 	public void setLevels(Integer levels) {
 		this.levels = levels;
 	}
-	
-	
 
 	public Date getMeCreate() {
 		return meCreate;
@@ -132,27 +137,27 @@ public class MemberBean implements Serializable{
 		this.meCreate = meCreate;
 	}
 
-	public Timestamp getLoginTime() {
+	public Date getLoginTime() {
 		return loginTime;
 	}
 
-	public void setLoginTime(Timestamp loginTime) {
+	public void setLoginTime(Date loginTime) {
 		this.loginTime = loginTime;
 	}
 
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Member [memId=");
+		builder.append("MemberBean [memId=");
 		builder.append(memId);
-		builder.append(", id=");
-		builder.append(id);
 		builder.append(", email=");
 		builder.append(email);
 		builder.append(", password=");
 		builder.append(password);
 		builder.append(", name=");
 		builder.append(name);
+		builder.append(", id=");
+		builder.append(id);
 		builder.append(", phone=");
 		builder.append(phone);
 		builder.append(", birth=");
@@ -161,6 +166,8 @@ public class MemberBean implements Serializable{
 		builder.append(sex);
 		builder.append(", headPic=");
 		builder.append(headPic);
+		builder.append(", fileName=");
+		builder.append(fileName);
 		builder.append(", levels=");
 		builder.append(levels);
 		builder.append(", meCreate=");
@@ -170,5 +177,4 @@ public class MemberBean implements Serializable{
 		builder.append("]");
 		return builder.toString();
 	}
-
 }

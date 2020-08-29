@@ -15,7 +15,8 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
 	crossorigin="anonymous">
-<link rel="stylesheet" href="./css/all.css">
+<link rel="stylesheet" href="../css/all.css">
+<script src="../javascript/image.js"></script>
 <style>
 input[type="submit"]:disabled {
 	background-color: red;
@@ -51,52 +52,60 @@ input[type="submit"]:disabled {
 <body class="bg-dark">
 	<jsp:include page="../fragment/topIndex.jsp"></jsp:include>
 	<form class="needs-validation mx-5 text-white" novalidate method="post"
-		action="/java014_01_Car98/member/register.do">
+		action="/java014_01_Car98/_01_register/register.do"
+		enctype="multipart/form-data">
 		<div class="form-row my-5 w-50">
 			<div class="col-md-4 mt-5 mb-2">
 				<label for="validationCustom01">姓名: </label> <input type="text"
-					class="form-control" value="${param.memberName}" name="memberName"
+					class="form-control" value="${param.name}" name="name"
 					id="validationCustom01" placeholder="姓名" required>
 				<div class="invalid-feedback">請輸入姓名</div>
+				<font color="red" size="-1">${MsgMap.errorName}</font>
 
 			</div>
 			<div class="col-md-4 mt-5 mb-2">
 				<label for="validationCustom02">暱稱: </label> <input type="text"
-					class="form-control w-auto" value="${param.memberId}" name="memberId"
-					id="validationCustom02" placeholder="暱稱" required>
+					class="form-control w-auto" value="${param.memberId}"
+					name="memberId" id="validationCustom02" placeholder="暱稱" required>
 				<div class="invalid-feedback">請輸入暱稱</div>
+				<font color="red" size="-1">${MsgMap.errorIdEmpty}</font>
 			</div>
 
 		</div>
 		<div class="form-group w-50 mb-5">
-				<label for="validationCustom02">手機號碼: </label> <input type="tel"
-					class="form-control w-auto" value="${param.memberPhone}" name="memberPhone"
-					id="validationCustom02" placeholder="手機號碼" pattern="[0-9]{4}[0-9]{3}[0-9]{3}" required>
-				<div class="invalid-feedback">請輸入正確的號/碼</div>
+			<label for="validationCustom02">手機號碼: </label> <input type="tel"
+				class="form-control w-auto" value="${param.phone}" name="phone"
+				id="validationCustom02" placeholder="手機號碼"
+				pattern="[0-9]{4}[0-9]{3}[0-9]{3}" required>
+			<div class="invalid-feedback">請輸入正確的號碼</div>
+			<font color="red" size="-1">${MsgMap.errorPhone}</font>
 		</div>
 		<div class="form-group w-50">
 			<label for="exampleInputEmail1">Email address: </label> <input
 				type="email" class="form-control" id="exampleInputEmail1"
-				value="${param.memberEmail}" name="memberEmail" aria-describedby="emailHelp"
-				placeholder="Enter email"
+				value="${param.email}" name="email"
+				aria-describedby="emailHelp" placeholder="Enter email"
 				pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" required>
 			<small id="emailHelp" class="form-text text-muted">We'll
 				never share your email with anyone else.</small>
 			<div class="invalid-feedback">請輸入正確的email</div>
+			<font color="red" size="-1">${MsgMap.errorIdDup}</font>
 		</div>
-		
+
 		<div class="form-row d-inline">
 			<div class="col-md-6 mb-2">
-				<label for="validationCustom03">生日: </label> <input type="text"
-					class="form-control" id="validationCustom03" name = "memberBirth"
-					value="${param.memberBirth}" placeholder="YYYY-MM-DD" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" required>
+				<label for="validationCustom03">生日: </label> <input type="date"
+					class="form-control" id="validationCustom03" name="birth"
+					value="${param.birth}" placeholder="YYYY-MM-DD"
+					pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" required>
 				<div class="invalid-feedback">請選擇日期</div>
+				<font color="red" size="-1">${ErrorMsg.errorBirth}</font>
 			</div>
-			<div class="col-md-3 mb-2">
+			<div class="col-md-3 mt-3">
 				<label for="validationCustom04">性別: </label>
 				<div class="form-check form-check-inline">
 					<input class="form-check-input" type="radio" name="gridRadios"
-						id="gridRadios1" value="M" checked> <label
+						id="gridRadios1" value="M"> <label
 						class="form-check-label text-primary" for="gridRadios1"> 男
 					</label>
 				</div>
@@ -106,40 +115,46 @@ input[type="submit"]:disabled {
 						class="form-check-label text-danger" for="gridRadios2"> 女
 					</label>
 				</div>
+					<font color="red" size="-1">${MsgMap.errorSex}</font>
+
 			</div>
-			<div class="invalid-feedback">Please provide a valid state.</div>
 		</div>
-		<div class="col-md-3">
+		<div class="col-md-3 p-1">
 			<div class="form-group">
 				<label for="exampleFormControlFile1">上傳頭像: </label> <input
 					type="file" class="form-control-file" id="exampleFormControlFile1"
-					value="${param.memberHeadPic}" name="memberHeadPic" >
+					value="${param.HeadPic}" name="HeadPic">
+				<p class="mt-2">
+					<img id="image">
+				</p>
 			</div>
 		</div>
 
 		<div class="form-group w-50 p-2">
-			密碼 <input type="text" id="pwdId" class="form-control"
-				pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" required>
+			密碼 <input type="password" id="pwdId" class="form-control"
+				name="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}" required>
 			<div class="valid-feedback">符合規則</div>
-			<div class="invalid-feedback">需包含字母、數字、8個字符 不含特殊符</div>
+			<div class="invalid-feedback">需包含大小字母、數字、特殊符號、8個字符 </div>
+			<font color="red" size="-1">${ErrorMsg.passwordError}</font>
 		</div>
 		<div class="form-group w-50 p-2">
-			確認密碼 <input type="text" id="cPwdId" class="form-control myCpwdClass"
-				pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
-				value="${param.memberPassword}" name="memberPassword" required>
+			確認密碼 <input type="password" id="cPwdId"
+				class="form-control myCpwdClass" value="${param.memberPassword}"
+				name="password1" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}" required>
 			<div id="cPwdValid" class="valid-feedback">密碼相符</div>
 			<div id="cPwdInvalid" class="invalid-feedback">密碼不相同</div>
+			<font color="red" size="-1">${MsgMap.passwordError}${MsgMap.errorPassword1Empty}</font>
 		</div>
 		<div class="form-group">
 			<div class="form-check">
-				<input class="form-check-input" type="checkbox" value=""
+				<input class="form-check-input mx-2" type="checkbox" value=""
 					id="invalidCheck" required> <label class="form-check-label"
 					for="invalidCheck"> 是否同意註冊 </label>
 				<div class="invalid-feedback">You must agree before
 					submitting.</div>
 			</div>
 		</div>
-		<button class="btn btn-secondary" type="submit">確認送出</button>
+		<button class="btn btn-secondary" id ="button" type="submit">確認送出</button>
 	</form>
 	<!-- footer -->
 	<jsp:include page="/fragment/footer.jsp"></jsp:include>
@@ -159,7 +174,6 @@ input[type="submit"]:disabled {
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
 		integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
 		crossorigin="anonymous"></script>
-		
 </body>
 
 </html>
