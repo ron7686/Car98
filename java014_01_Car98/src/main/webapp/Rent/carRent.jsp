@@ -22,7 +22,7 @@
     crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
     integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous" />
-  <link rel="stylesheet" href="./css/BSRent.css">
+  <link rel="stylesheet" href="../css/BSRent.css">
   <script src="http://maps.google.com/maps/api/js"></script>
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
  
@@ -256,7 +256,7 @@
       </p>
     </div>
   </div>
-  <script src="./javascript/BSRent.js"></script>
+  <script src="../javascript/BSRent.js"></script>
 </body>
 
 </html>
