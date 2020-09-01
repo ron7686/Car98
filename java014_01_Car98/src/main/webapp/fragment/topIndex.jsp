@@ -4,7 +4,8 @@
 
 
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-	<a class="navbar-brand" href="${pageContext.request.contextPath}/index.jsp"><img
+	<a class="navbar-brand"
+		href="${pageContext.request.contextPath}/index.jsp"><img
 		src="${pageContext.request.contextPath}/image/car98logo.png"
 		width="50" height="50" alt=""></a>
 	<button class="navbar-toggler navbar-toggler-right" type="button"
@@ -49,14 +50,35 @@
 				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 					<a class="dropdown-item"
 						href="https://www.mvdis.gov.tw/m3-emv-vil/vil/penaltyQueryPay"
-						target="_blank"">罰單查詢</a> <a class="dropdown-item"
+						target="_blank">罰單查詢</a> <a class="dropdown-item"
 						href="https://parkingfee.pma.gov.taipei/" target="_blank">停車費查詢</a>
 				</div></li>
 			<li class="nav-item"><a class="nav-link" href="#">Car好買</a></li>
 			<li class="nav-item"><a class="nav-link" href="#">Car論壇</a></li>
-			<li class="nav-item active"><a class="nav-link"
-				href="${pageContext.request.contextPath}/login/BSlogin.jsp">註冊登入 <span class="sr-only">(current)</span></a>
-			</li>
+			<c:if test="${empty LoginOK}">
+				<li class="nav-item active"><a class="nav-link"
+					href="${pageContext.request.contextPath}/login/BSlogin.jsp">登入
+						<span class="sr-only">(current)</span>
+
+				</a></li>
+			</c:if>
+			<c:if test="${ ! empty LoginOK }">
+				<li class="nav-item active"><a class="nav-link"
+					href="${pageContext.request.contextPath}/login/logout.jsp">登出 <span
+						class="sr-only">(current)</span>
+				</a></li>
+
+			</c:if>
 		</ul>
 	</div>
+
+	<c:if test="${! empty LoginOK }">
+		<a class="navbar-brand" href="#"><img
+			style="width: 40px; height: 40px; border-radius: 50%;"
+			src='${pageContext.request.contextPath}/_00_init/getMemberImage?id=${LoginOK.memId}'>
+		</a>
+
+	</c:if>
+
+
 </nav>
