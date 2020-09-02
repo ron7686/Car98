@@ -130,14 +130,14 @@ input[type="submit"]:disabled {
 			</div>
 		</div>
 
-		<div class="form-group w-50 p-2">
+		<div class="form-group w-50">
 			密碼 <input type="password" id="pwdId" class="form-control"
 				name="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}" required>
 			<div class="valid-feedback">符合規則</div>
 			<div class="invalid-feedback">需包含大小字母、數字、特殊符號、8個字符 </div>
 			<font color="red" size="-1">${ErrorMsg.passwordError}</font>
 		</div>
-		<div class="form-group w-50 p-2">
+		<div class="form-group w-50">
 			確認密碼 <input type="password" id="cPwdId"
 				class="form-control myCpwdClass" value="${param.memberPassword}"
 				name="password1" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}" required>
@@ -147,7 +147,7 @@ input[type="submit"]:disabled {
 		</div>
 		<div class="form-group">
 			<div class="form-check">
-				<input class="form-check-input mx-2" type="checkbox" value=""
+				<input class="form-check-input p-5" type="checkbox" value=""
 					id="invalidCheck" required> <label class="form-check-label"
 					for="invalidCheck"> 是否同意註冊 </label>
 				<div class="invalid-feedback">You must agree before
