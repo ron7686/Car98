@@ -1,0 +1,36 @@
+
+.row{
+    /* border:1px solid white; */
+    font-size:20px;
+    height: 500px;
+}
+.col-md-4{
+    /* border:1px solid yellow; */
+    height: 40px;
+    text-align:center;
+    /* color:white; */
+}
+.col-md-12{
+    border:1px solid green;
+    text-align: center;
+    
+}
+
+#caritem{
+    height: 30px;
+    width: 200px;
+    
+}
+#priceitem{
+    height: 30px;
+    width: 200px;
+}
+#searchitem{
+    height: 30px;
+    width: 200px;
+}
+.mainitem{
+    /* border:1px solid yellow; */
+    text-align: center;
+    font-size:30px;
+}
