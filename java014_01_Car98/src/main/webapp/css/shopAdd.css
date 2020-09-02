@@ -1,0 +1,126 @@
+/* for all page */
+.footer-bottom{
+  margin-top: 1em;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  
+  }
+.footer-bottom p.pull-left{
+  padding-top: 6px;
+  font-size: 0.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  }
+.bg-cover{
+  background-size: cover;
+  background-position: center center;
+  }
+  body{
+    background-image: url(../image/Desktop.png);
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat:no-repeat;
+    background-size: cover;
+  }
+
+/* car shopping position: relative */
+.product-grid{
+  font-family:Raleway,sans-serif;
+  text-align:center;
+  padding:0 0 72px;
+  border:1px solid rgba(0,0,0,.1);
+  border-radius: 10px;
+  overflow:hidden;
+  position:relative;
+  z-index:1
+}
+/*  all image hover 效果 */
+.product-grid .product-image{
+  position:relative;
+  transition:all .3s ease 0s
+}
+.product-grid .product-image a{
+  display:block
+}
+.product-grid .product-image img{
+  width:100%;
+  height:auto
+}
+.product-grid .pic-1{opacity:1;
+  transition:all .3s ease-out 0s
+}
+.product-grid:hover .pic-1{
+  opacity:1
+}
+.product-grid .pic-2{
+  opacity:0;
+  position:absolute;
+  top:0;
+  left:0;
+  transition:all .3s ease-out 0s
+}
+.product-grid:hover .pic-2{
+  opacity:1
+}
+
+/* product text & hover */
+.product-grid .product-content{
+  background-color: rgba(0, 0, 0, .1);
+  text-align:center;
+  padding:10px 0;
+  margin:0 auto;
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:-27px;
+  z-index:1;
+  transition:all .3s
+}
+.product-grid:hover .product-content{
+  bottom:0;
+}
+.product-grid .title{
+  font-size:13px;
+  font-weight:400;
+  letter-spacing:.5px;
+  text-transform:capitalize;
+  margin:0 0 10px;
+  transition:all .3s ease 0s
+}
+.product-grid .title a{
+  color:#fff
+}
+.product-grid .title a:hover,.product-grid:hover .title a{
+  color:yellow
+}
+.product-grid .price{
+  color:#fff;
+  font-size:17px;
+  font-family:Montserrat,sans-serif;
+  font-weight:700;
+  letter-spacing:.6px;
+  margin-bottom:8px;
+  text-align:center;
+  transition:all .3s
+}
+.product-grid .price span{
+  color:#fff;
+  font-size:13px;
+  font-weight:400;
+  text-decoration:line-through;
+  margin-left:3px;
+  display:inline-block
+}
+.product-grid .add-to-cart{
+  color:#fff;
+  font-size:13px;
+  font-weight:600;
+}
+.letter-spacing{
+  letter-spacing: 2px;
+}
+/* RWD */
+@media only screen and (max-width:990px){
+  .product-grid{margin-bottom:30px}
+}

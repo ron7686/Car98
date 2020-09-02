@@ -1,0 +1,101 @@
+.container{
+    height: 900px;
+    border:2px solid white;
+}
+
+.col-2{
+    /* border:2px solid white; */
+    height: 100px;
+    padding:0px;
+}
+.publish{
+    /* height: 30px; */
+    border-bottom:2px solid white;
+}
+.filter{
+    border-bottom:2px solid white;
+}
+.head{
+    text-align: center;
+    font-size:35px;
+    height: 45px;
+}
+nav{
+
+width: 100%;
+height: 45px;
+margin-top: 10px;
+}
+.classification{
+    width: 100%;
+   padding:0px;
+    /* border:1px solid brown; */
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    margin-top:15px;
+    
+}
+.classification-item{
+    background:rgba(255, 255, 255, 0.966);
+    font-size:18px;
+    margin-right:15px;
+    border:1px solid white;
+    width:100px;
+    text-align: center;
+    
+}
+.classification-item-a{
+    color:black;
+    
+}
+.maintalk{
+    
+    text-align: center;
+}
+.sort{
+    width: 120px;
+    
+}
+.pic{
+    width: 120px;
+    
+}
+.title{
+    width: 600px;
+     
+}
+.author{
+    width: 120px;
+}
+.respon{
+    width: 120px;
+}
+.lastupdate{
+    width: 120px;
+}
+.main{
+    border-bottom:2px solid white;
+}
+.talk{
+    height: 50px;
+}
+.itemtitle{
+    text-align:left;
+}
+.subtitle{
+    color:white;
+    font-size:20px;
+}
+.talkname{
+    color:white;
+    font-size: 20px;
+}
+.subrespon{
+    color:rgb(255, 255, 255);
+    font-size: 20px;
+}
+.time{
+    color:white;
+}
+
