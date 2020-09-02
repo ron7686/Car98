@@ -1,19 +1,19 @@
 .container{
     
-    border:1px solid red; 
+    border:2px solid white; 
     color:white;
 }
 .col-12{
-    border:1px solid pink;
+/*     border:1px solid pink; */
     font-size:35px;
 }
 .col-2{
     height: 600px;
-    border:1px solid green;
+    border:2px solid white;
 }
 .col-10{
     height: 600px;
-    border:1px solid blue;
+    border:2px solid white;
 }
 img{
     width: 140px;
@@ -26,26 +26,26 @@ img{
 }
 .floor{
     width: 300px;
-    border:1px solid red;
+/*     border:1px solid red; */
     
 }
 .author{
     width: 200px;
     font-size:18px;
-    border:1px solid orange;
+/*     border:2px solid white; */
 }
 .account{
     width: 700px;
-    border:1px solid olive;
+/*     border:1px solid olive; */
    
 }
 .gp{
     width: 50px;
-    border:1px solid palevioletred
+/*     border:1px solid palevioletred */
 }
 .bp{
     width: 50px;
-    border:1px solid salmon;
+/*     border:1px solid salmon; */
 }
 .BBB{
     height: 450px;

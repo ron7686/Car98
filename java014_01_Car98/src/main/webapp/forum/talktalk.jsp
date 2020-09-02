@@ -5,7 +5,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CarRent Page</title>
+    <title>MemberTalk Page</title>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -33,7 +33,7 @@
       integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="../css/1_talk.css">
+    <link rel="stylesheet" href="../css/talktalk.css">
 
     <script src="http://maps.google.com/maps/api/js"></script>
     <script src="../js/BSRent.js"></script>
@@ -220,6 +220,7 @@
                 </div>
                 <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                   <div class="btn-group mr-2" role="group" aria-label="First group">
+                    <center>
                       <button type="button" class="btn btn-secondary">1</button>
                       <button type="button" class="btn btn-secondary">2</button>
                       <button type="button" class="btn btn-secondary">3</button>
@@ -227,19 +228,14 @@
                       <button type="button" class="btn btn-secondary">5</button>
                       <button type="button" class="btn btn-secondary">6</button>
                       <button type="button" class="btn btn-secondary">7</button>
+
+                    </center>  
+                    
                   </div>
                 </div>
                 
          </div>
        </div>
-
->
-
-
-
-
-
-    
   <!-- footer -->
   <div class="footer-bottom  bg-dark text-light">
     <div class="container-fluid">
