@@ -1,5 +1,9 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: NTUT
+=======
+Built-By: user
+>>>>>>> f9988046eed3aaf0dad306931f1181f9dd8df7bc
 Build-Jdk: 1.8.0_252
 Created-By: Maven Integration for Eclipse
 
