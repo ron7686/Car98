@@ -1,0 +1,70 @@
+.container{
+    
+    border:1px solid red; 
+    color:white;
+}
+.col-12{
+    border:1px solid pink;
+    font-size:35px;
+}
+.col-2{
+    height: 600px;
+    border:1px solid green;
+}
+.col-10{
+    height: 600px;
+    border:1px solid blue;
+}
+img{
+    width: 140px;
+    height: 140px;
+}
+.AAA{
+    list-style: none;
+    display: flex;
+    padding-left: 0px;
+}
+.floor{
+    width: 300px;
+    border:1px solid red;
+    
+}
+.author{
+    width: 200px;
+    font-size:18px;
+    border:1px solid orange;
+}
+.account{
+    width: 700px;
+    border:1px solid olive;
+   
+}
+.gp{
+    width: 50px;
+    border:1px solid palevioletred
+}
+.bp{
+    width: 50px;
+    border:1px solid salmon;
+}
+.BBB{
+    height: 450px;
+    font-size:20px;
+}
+.CCC{
+    height: 60px;
+    font-size:20px;
+}
+.response{
+    padding-right: 0px;
+}
+.DDD{
+    list-style: none;
+    display: flex;
+}
+.EEE{
+   width: 80px;
+}
+.FFF{
+    width: 650px;
+}
