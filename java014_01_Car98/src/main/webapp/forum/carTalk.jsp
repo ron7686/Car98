@@ -220,43 +220,7 @@
     
             <div class="col-12">
                 <table class="maintalk mt-1 talk">
-                    <tr>
-                        <td class="sort "><a href=""><i class="fas fa-car-crash"></i></i>求助＆問題</a></td>
-                        <td class="pic"><img src="https://picsum.photos/id/231/100/50" alt=""></td>
-                        <th class="title itemtitle"><a class="subtitle" href="${pageContext.request.contextPath}/forum/talktalk.jsp">2011年TIDA 5門 1.8 油耗問題</a></th>
-                        <td class="author"><a class="talkname" href="${pageContext.request.contextPath}/forum/talktalk.jsp">RonLee</a><br>2020/09/20 </td>
-                        <td class="respon"><a class="subrespon" href="">131</a><br>15443</td>
-                        <td class="lastupdate"><a class="talkname" href="">WayneChen</a><br><a  class="time" href="">昨天10:43pm</a></td>
-                    </tr>
-                
-                    <tr>
-                        <td class="sort "><a href=""><i class="fas fa-bullhorn"></i>公告</a></td>
-                        <td class="pic"><img src="https://picsum.photos/id/231/100/50" alt=""></td>
-                        <th class="title itemtitle"><a class="subtitle" href="${pageContext.request.contextPath}/forum/talktalk.jsp">2011年TIDA 5門 1.8 油耗問題</a></th>
-                        <td class="author"><a class="talkname" href="${pageContext.request.contextPath}/forum/talktalk.jsp">RonLee</a><br>2020/09/20 </td>
-                        <td class="respon"><a class="subrespon" href="">131</a><br>15443</td>
-                        <td class="lastupdate"><a class="talkname" href="">WayneChen</a><br><a  class="time" href="">昨天10:43pm</a></td>
-                    </tr>                    
-                    <tr>
-                        <td class="sort "><a href=""><i class="fas fa-couch"></i>分享＆心得</a></td>
-                        <td class="pic"><img src="https://picsum.photos/id/231/100/50" alt=""></td>
-                        <th class="title itemtitle"><a class="subtitle" href="${pageContext.request.contextPath}/forum/talktalk.jsp">2011年TIDA 5門 1.8 油耗問題</a></th>
-                        <td class="author"><a class="talkname" href="${pageContext.request.contextPath}/forum/talktalk.jsp">RonLee</a><br>2020/09/20 </td>
-                        <td class="respon"><a class="subrespon" href="">131</a><br>15443</td>
-                        <td class="lastupdate"><a class="talkname" href="">WayneChen</a><br><a  class="time" href="">昨天10:43pm</a></td>
-                    </tr>
-                    <tr>
-                        <td class="sort "><a href=""><i class="fab fa-discourse"></i>討論</a></td>
-                        <td class="pic"><img src="https://picsum.photos/id/231/100/50" alt=""></td>
-                        <th class="title itemtitle"><a class="subtitle" href="${pageContext.request.contextPath}/forum/talktalk.jsp">2011年TIDA 5門 1.8 油耗問題</a></th>
-                        <td class="author"><a class="talkname" href="${pageContext.request.contextPath}/forum/talktalk.jsp">RonLee</a><br>2020/09/20 </td>
-                        <td class="respon"><a class="subrespon" href="">131</a><br>15443</td>
-                        <td class="lastupdate"><a class="talkname" href="">WayneChen</a><br><a  class="time" href="">昨天10:43pm</a></td>
-                    </tr>
-                    
-                </table>
-                <table class="maintalk mt-1 talk">
-                <c:forEach var="aBean" items="${talkService.allTalk}">
+                <c:forEach var="aBean" items="${abean}">
 				  <tr>
                         <td class="sort "><a href=""><i class="fab fa-discourse"></i>討論</a></td>
                         <td class="pic"><img src="https://picsum.photos/id/231/100/50" alt=""></td>
