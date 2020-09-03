@@ -129,7 +129,7 @@
        <div class="container">
          <div class="row">
            <div class="col-12 text-white">
-            [討論]大家購買車子的考量是什麼？
+          	${TalkBean.postTitle}
            </div>
            <div class="col-2">
              <a href="#"><img src="../image/喬巴1.jpg"></a>
@@ -147,11 +147,7 @@
                 <li class="bp">噓18</li>
               </ul>
               <div class="col-12 BBB">
-                    最近要入手人生的第一台車，請問大家都怎麼挑車子呢？<br>
-                    會優先考量哪些重要因素？<br>
-                    例如：價格、車子性能（主動被動功能、馬力）、車子安全性、車子外型、廠牌<br>
-                    看很多車主很在意有沒有主動安全配備,<br>
-                    但我又擔心擁有這些功能卻不會善用，想知道大家都怎麼挑選心目中首選的車子<br>
+                    ${TalkBean.postText}
                     <img src="https://picsum.photos/id/222/500/600" alt=""><br>
                   </div>
                   <div class="col-12 CCC">
