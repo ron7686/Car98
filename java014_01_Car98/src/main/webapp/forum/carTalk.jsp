@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -130,7 +130,7 @@
         
       <div class="container text-white">
         <div class="row">
-            <div class="col-12 head">
+            <div class="col-12 head">
                 汽車交流論壇
             </div>
             <div class="col-2 border">
@@ -165,7 +165,7 @@
             <div class="col-12 publish">
                 <nav aria-label="Page navigation example ">
                     <ul class="pagination justify-content-end ">
-                        <button class="btn text-white bg-primary mr-auto ml-1">發帖<i class="fas fa-angle-down"></i></button>
+                        <button class="btn text-white bg-primary mr-auto ml-1"><a class="text-white" href="content_1.jsp" ">發帖<i class="fas fa-angle-down"></i></a></button>
                       <li class="page-item disabled ">
                         <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
                       </li>
