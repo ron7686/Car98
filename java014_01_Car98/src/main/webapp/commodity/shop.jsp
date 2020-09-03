@@ -18,7 +18,7 @@
 <body>
   <!-- navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark ">
-    <a class="navbar-brand" href="#"><img src="../image/car98logo.png" width="50" height="50" alt=""></a>
+    <a class="navbar-brand" href="${pageContext.request.contextPath}/index.jsp"><img src="../image/car98logo.png" width="50" height="50" alt=""></a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
       data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
       aria-label="Toggle navigation">
@@ -312,7 +312,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
     integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
     crossorigin="anonymous"></script>
-  <script src="../js/shopAdd.js"></script>
+  <script src="../javascript/shopAdd.js"></script>
 </body>
 
 </html>
