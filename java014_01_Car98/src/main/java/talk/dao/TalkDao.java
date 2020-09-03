@@ -35,9 +35,10 @@ public class TalkDao {
 	@SuppressWarnings("unchecked")
 	public List<TalkBean> getAll(){
 		List<TalkBean> li = new ArrayList<>();
-		String hql = "FROM talk";
+		String hql = "FROM talkBean";
 		Session session = factory.getCurrentSession();
 		li = session.createQuery(hql).list();
+		System.out.println("123"+li.toString());
 		return li;
 	}
 	

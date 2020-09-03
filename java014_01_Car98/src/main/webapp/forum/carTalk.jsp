@@ -255,6 +255,18 @@
                     </tr>
                     
                 </table>
+                <table class="maintalk mt-1 talk">
+                <c:forEach var="aBean" items="${talkService.allTalk}">
+				  <tr>
+                        <td class="sort "><a href=""><i class="fab fa-discourse"></i>討論</a></td>
+                        <td class="pic"><img src="https://picsum.photos/id/231/100/50" alt=""></td>
+                        <th class="title itemtitle"><a class="subtitle" href="#">${aBean.postTitle}</a></th>
+                        <td class="author"><a class="talkname" href="#">RonLee</a><br>2020/09/20 </td>
+                        <td class="respon"><a class="subrespon" href="">131</a><br>15443</td>
+                        <td class="lastupdate"><a class="talkname" href="">WayneChen</a><br><a  class="time" href="">昨天10:43pm</a></td>
+                  </tr>
+				 </c:forEach>
+                </table>
             </div>
         </div>
        </div> 
