@@ -118,7 +118,7 @@
               <a class="nav-link" href="#">Car好買</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Car論壇</a>
+              <a class="nav-link" href="${pageContext.request.contextPath}/forum/talktop.do">Car論壇</a>
             </li>
             <li class="nav-item active">
               <a class="nav-link" href="/BSlogin.html">註冊登入 <span class="sr-only">(current)</span></a>
