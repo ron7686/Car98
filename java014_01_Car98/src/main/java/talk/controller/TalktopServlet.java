@@ -27,7 +27,6 @@ public class TalktopServlet extends HttpServlet {
 		TalkService ts=new TalkService();
 		List<TalkBean> li=ts.select();
 		session.setAttribute("abean", li);
-		System.out.println(li.toString() + "123");
 		RequestDispatcher rd=request.getRequestDispatcher("/forum/carTalk.jsp");
 		rd.forward(request, response);
 		return;
