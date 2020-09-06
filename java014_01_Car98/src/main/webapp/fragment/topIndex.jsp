@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar  navbar-expand-lg navbar-dark bg-dark">
 	<a class="navbar-brand"
 		href="${pageContext.request.contextPath}/index.jsp"><img
 		src="${pageContext.request.contextPath}/image/car98logo.png"
