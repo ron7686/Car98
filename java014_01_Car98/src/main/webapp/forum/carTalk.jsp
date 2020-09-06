@@ -109,7 +109,7 @@
             <div class="col-12 publish">
                 <nav aria-label="Page navigation example ">
                     <ul class="pagination justify-content-end ">
-                        <button class="btn text-white bg-primary mr-auto ml-1" onclick="window.location.href='content_1.jsp'">發帖<i class="fas fa-angle-down"></i></button>
+                        <button class="btn text-white bg-primary mr-auto ml-1" onclick="window.location.href='talkContent.jsp'">發帖<i class="fas fa-angle-down"></i></button>
                       <li class="page-item disabled ">
                         <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
                       </li>
