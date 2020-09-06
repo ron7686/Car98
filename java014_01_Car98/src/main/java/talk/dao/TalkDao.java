@@ -39,7 +39,7 @@ public class TalkDao {
 		String hql = "FROM TalkBean";
 		Session session = factory.getCurrentSession();
 		li = session.createQuery(hql).list();
-		
+
 		return li;
 	}
 	
