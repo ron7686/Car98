@@ -36,7 +36,7 @@
     <link rel="stylesheet" href="../css/talktalk.css">
 
     <script src="http://maps.google.com/maps/api/js"></script>
-    <script src="../js/BSRent.js"></script>
+    <script src=""></script>
     <style>
       #carouselExampleFade .carousel-inner .carousel-item img{
         height:720px;       

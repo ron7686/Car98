@@ -122,7 +122,9 @@ body {
 					<form class="mt-3" action="talk.do" method="Post">
 						<input class="title" type="text"  name="title"
 							placeholder="請輸入文章標題......." value="${param.title}">
-						<textarea class="mt-3" name="text" id="article" cols="100" rows="20" placeholder="請輸入內容......" ></textarea>
+							<span>${ErrorMsgKey.TitleEmptyError}</span>
+						<textarea class="mt-3" name="text" id="article" cols="100" rows="20" placeholder="請輸入內容......" >${param.text}</textarea>
+						<span>${ErrorMsgKey.TextEmptyError}</span>
 						<input type="submit" value="發佈文章" class="publish">
 					</form>
 				</div>
