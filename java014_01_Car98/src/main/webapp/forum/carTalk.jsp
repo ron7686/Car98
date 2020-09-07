@@ -175,7 +175,7 @@
                       </li>
                       <li class="page-item"><a class="page-link" href="#">3</a></li>
                       <li class="page-item">
-                        <a class="page-link" href="#">Next</a>
+                        <a class="page-link" href="${pageContext.request.contextPath}/forum/talktop.do?pageNo=${pageNo+1}">Next</a>
                       </li>
                     </ul>
                   </nav>

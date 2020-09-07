@@ -25,13 +25,13 @@ public class TalkService {
 		dao.persist(tb);
 	}
 	
-	public List<TalkBean> select(){
+	public List<TalkBean> select(int page){
 		List<TalkBean> bean = null;
 		Session session = factory.getCurrentSession();
 		Transaction tx = null;
 		try {
 			tx = session.beginTransaction();
-			bean = dao.getAll();
+			bean = dao.getAll(page);
 			tx.commit();
 		} catch (Exception ex) {
 			if (tx != null)
@@ -42,8 +42,8 @@ public class TalkService {
 		return bean;
 	}
 	
-	public List<TalkBean> getAllTalk(){
-		return select();
+	public List<TalkBean> getAllTalk(int page){
+		return select(page);
 	}
 	
 	
