@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import _01_register.model.MemberBean;
 import _01_register.service.MemberService;
-import _01_register.service.impl.MemberServiceImpl;
+import _01_register.service.impl.MemberServiceImpl_Hibernate;
 
 
 
@@ -31,11 +31,13 @@ public class RetrieveMemberImageServlet extends HttpServlet {
 		Blob blob = null;
 		try {
 			// 讀取瀏覽器傳送來的主鍵
-			String id = request.getParameter("id");
+			String sid = request.getParameter("id");
+			
+			Integer id = Integer.parseInt(sid);
 			// 讀取瀏覽器傳送來的type，以分辨要處理哪個表格
 			// MemberService 是介面  =  MemberServiceImpl() 類別
 			// 針對介面去寫程式，很重要，Spring也會再提到。
-			MemberService memberService = new MemberServiceImpl();
+			MemberService memberService = new MemberServiceImpl_Hibernate();
 			MemberBean bean = memberService.queryMember(id);
 			if (bean != null) {
 				blob = bean.getHeadPic();

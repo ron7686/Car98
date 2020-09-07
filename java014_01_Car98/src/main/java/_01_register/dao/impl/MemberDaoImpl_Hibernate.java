@@ -93,6 +93,15 @@ public class MemberDaoImpl_Hibernate implements MemberDao {
 		n++;
 		return n;
 	}
+	
+	public int updateUserData(int id) {
+		int n = 0;
+		Session session = factory.getCurrentSession();
+		String hql = "UPDATE MemberBean set LoginTime = now() where email= :email";
+		session.createQuery(hql).setParameter("email", id).executeUpdate();
+		n++;
+		return n;
+	}
 
 	@Override
 	public void setConnection(Connection conn) {

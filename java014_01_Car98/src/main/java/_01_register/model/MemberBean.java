@@ -55,6 +55,23 @@ public class MemberBean implements Serializable {
 		this.meCreate = meCreate;
 		this.loginTime = loginTime;
 	}
+	
+	public MemberBean(Integer memId, String email, String password, String name, String id, String phone, Date birth,
+			String sex, Blob headPic, String fileName,Integer levels,Timestamp loginTime) {
+		super();
+		this.memId = memId;
+		this.email = email;
+		this.password = password;
+		this.name = name;
+		this.id = id;
+		this.phone = phone;
+		this.birth = birth;
+		this.sex = sex;
+		this.headPic = headPic;
+		this.fileName = fileName;
+		this.levels = levels;
+		this.loginTime = loginTime;
+	}
 
 	public Integer getMemId() {
 		return memId;
