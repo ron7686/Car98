@@ -66,7 +66,7 @@
 	</div>
 
 	<c:if test="${! empty LoginOK }">
-		<a class="navbar-brand" href="#"><img
+		<a class="navbar-brand" href="${pageContext.request.contextPath}/_01_register/management.do"><img
 			style="width: 40px; height: 40px; border-radius: 50%;"
 			src='${pageContext.request.contextPath}/_00_init/getMemberImage?id=${LoginOK.memId}'>
 		</a>

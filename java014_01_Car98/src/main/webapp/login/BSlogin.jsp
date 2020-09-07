@@ -63,7 +63,64 @@ body {
 </head>
 <body>
 	<!-- navbar -->
-	<jsp:include page="/fragment/topIndex.jsp" />
+	<nav class="navbar navbar-expand-lg navbar-dark">
+		<a class="navbar-brand"
+			href="${pageContext.request.contextPath}/index.jsp"><img
+			src="${pageContext.request.contextPath}/image/car98logo.png"
+			width="60" height="60" alt=""></a>
+		<button class="navbar-toggler navbar-toggler-right" type="button"
+			data-toggle="collapse" data-target="#navbarNavDropdown"
+			aria-controls="navbarNavDropdown" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse justify-content-end"
+			id="navbarNavDropdown">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="#"
+					id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+					aria-haspopup="true" aria-expanded="false"> Car好康 </a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<a class="dropdown-item" href="#">搜尋加油站</a> <a
+							class="dropdown-item" href="#">搜尋自助洗車</a> <a
+							class="dropdown-item" href="#">搜尋停車位</a>
+					</div>
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="/carEasy.html"
+					id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+					aria-haspopup="true" aria-expanded="false"> Car方便 </a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<a class="dropdown-item" href="/carEasy.html">加油紀錄</a> <a
+							class="dropdown-item" href="#">保養紀錄</a> <a class="dropdown-item"
+							href="#">保險紀錄</a>
+					</div></li>
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="#"
+					id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+					aria-haspopup="true" aria-expanded="false"> Car租車 </a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<a class="dropdown-item" href="#">汽車</a> <a class="dropdown-item"
+							href="#">機車</a> <a class="dropdown-item" href="#">腳踏車</a>
+					</div></li>
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="#"
+					id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+					aria-haspopup="true" aria-expanded="false"> Car帳單 </a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<a class="dropdown-item"
+							href="https://www.mvdis.gov.tw/m3-emv-vil/vil/penaltyQueryPay"
+							target="_blank"">罰單查詢</a> <a class="dropdown-item"
+							href="https://parkingfee.pma.gov.taipei/" target="_blank">停車費查詢</a>
+					</div></li>
+				<li class="nav-item"><a class="nav-link" href="#">Car好買</a></li>
+				<li class="nav-item"><a class="nav-link" href="#">Car論壇</a></li>
+				<li class="nav-item active"><a class="nav-link"
+					href="BSlogin.jsp">登入 <span class="sr-only">(current)</span></a>
+				</li>
+			</ul>
+		</div>
+	</nav>
 	<!-- form-->
 	<!-- <section class="my-5"> -->
 	<div class="container d-flex text-white container-height">
@@ -73,7 +130,7 @@ body {
 					width="100%" height="200px" alt="">
 			</div>
 			<div class="col-md-6">
-				<form action="<c:url value='login.do' />" method="POST"
+				<form action="<c:url value='/login/login.do' />" method="POST"
 					class="needs-validation" name="loginForm" novalidate>
 					<div class="form-group">
 						<label for="email">Email</label> <input type="email"
