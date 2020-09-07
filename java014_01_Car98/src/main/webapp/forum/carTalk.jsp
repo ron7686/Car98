@@ -107,21 +107,19 @@
 
             </div>
             <div class="col-12 publish">
-                <nav aria-label="Page navigation example ">
+                <nav aria-label="Page navigation example " class="publishitem">
                     <ul class="pagination justify-content-end ">
                         <button class="btn text-white bg-primary mr-auto ml-1" onclick="window.location.href='talkContent.jsp'">發帖<i class="fas fa-angle-down"></i></button>
-                      <li class="page-item disabled ">
-                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                      </li>
-                      <li class="page-item"><a class="page-link" href="#">1</a></li>
-                      <li class="page-item active" aria-current="page">
-                        <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                      </li>
-                      <li class="page-item"><a class="page-link" href="#">3</a></li>
-                      <li class="page-item">
-                        <a class="page-link" href="#">Next</a>
-                      </li>
-                    </ul>
+                      <li class="page-item"><a class="page-link" href="#"
+					aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+				</a></li>
+				<li class="page-item"><a class="page-link" href="#">1</a></li>
+				<li class="page-item"><a class="page-link" href="#">2</a></li>
+				<li class="page-item"><a class="page-link" href="#">3</a></li>
+				<li class="page-item"><a class="page-link" href="#"
+					aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+				</a></li>
+			</ul>
                   </nav>
             </div>
             <div class="col-12 ">

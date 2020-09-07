@@ -54,6 +54,16 @@ input[type="submit"]:disabled {
 	<form class="needs-validation mx-5 text-white" novalidate method="post"
 		action="/java014_01_Car98/_01_register/register.do"
 		enctype="multipart/form-data">
+		<div class="col-md-4  mt-5  p-1 ">
+			<div class="form-group  ">
+				<label for="exampleFormControlFile1">上傳頭像: </label> <input
+					type="file" class="form-control-file" id="exampleFormControlFile1"
+					value="${param.HeadPic}" name="HeadPic">
+				<p class="mt-2">
+					<img id="image">
+				</p>
+			</div>
+		</div>
 		<div class="form-row my-5 w-50">
 			<div class="col-md-4 mt-5 mb-2">
 				<label for="validationCustom01">姓名: </label> <input type="text"
@@ -119,16 +129,7 @@ input[type="submit"]:disabled {
 
 			</div>
 		</div>
-		<div class="col-md-3 p-1">
-			<div class="form-group">
-				<label for="exampleFormControlFile1">上傳頭像: </label> <input
-					type="file" class="form-control-file" id="exampleFormControlFile1"
-					value="${param.HeadPic}" name="HeadPic">
-				<p class="mt-2">
-					<img id="image">
-				</p>
-			</div>
-		</div>
+		
 
 		<div class="form-group w-50">
 			密碼 <input type="password" id="pwdId" class="form-control"
