@@ -51,7 +51,7 @@ public class TalkServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 		}else {
-			RequestDispatcher rd= request.getRequestDispatcher("/forum/content_1.jsp");
+			RequestDispatcher rd= request.getRequestDispatcher("/forum/talkContent.jsp");
 			rd.forward(request, response);
 			return;
 		}

@@ -130,7 +130,7 @@ body {
 					width="100%" height="200px" alt="">
 			</div>
 			<div class="col-md-6">
-				<form action="<c:url value='login.do' />" method="POST"
+				<form action="<c:url value='/login/login.do' />" method="POST"
 					class="needs-validation" name="loginForm" novalidate>
 					<div class="form-group">
 						<label for="email">Email</label> <input type="email"

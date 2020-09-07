@@ -3,11 +3,23 @@
 import java.io.Serializable;
 import java.sql.Blob;
 import java.sql.Date;
+import java.sql.Timestamp;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="mem")
 public class MemberBean implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer memId;
+	
 	private String email;
 	private String password;
 	private String name;
@@ -19,7 +31,7 @@ public class MemberBean implements Serializable {
 	private String fileName;
 	private Integer levels;
 	private Date meCreate;
-	private Date loginTime;
+	private Timestamp loginTime;
 
 	
 	public MemberBean() {
@@ -27,7 +39,7 @@ public class MemberBean implements Serializable {
 	}
 	
 	public MemberBean(Integer memId, String email, String password, String name, String id, String phone, Date birth,
-			String sex, Blob headPic, String fileName) {
+			String sex, Blob headPic, String fileName,Integer levels,Date meCreate,Timestamp loginTime) {
 		super();
 		this.memId = memId;
 		this.email = email;
@@ -39,6 +51,9 @@ public class MemberBean implements Serializable {
 		this.sex = sex;
 		this.headPic = headPic;
 		this.fileName = fileName;
+		this.levels = levels;
+		this.meCreate = meCreate;
+		this.loginTime = loginTime;
 	}
 
 	public Integer getMemId() {
@@ -137,11 +152,11 @@ public class MemberBean implements Serializable {
 		this.meCreate = meCreate;
 	}
 
-	public Date getLoginTime() {
+	public Timestamp getLoginTime() {
 		return loginTime;
 	}
 
-	public void setLoginTime(Date loginTime) {
+	public void setLoginTime(Timestamp loginTime) {
 		this.loginTime = loginTime;
 	}
 

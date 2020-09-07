@@ -39,6 +39,7 @@ public class TalkDao {
 		List<TalkBean> li = new ArrayList<>();
 		String hql = "FROM TalkBean";
 		Session session = factory.getCurrentSession();
+<<<<<<< HEAD
 		li=session.createQuery(hql).list();
 		List<TalkBean> li10=new ArrayList<>();
 		for(int i=getpage;i<getpage+10&&i<li.size();i++) {
@@ -46,6 +47,11 @@ public class TalkDao {
 		}
 		//li = session.createQuery(hql).list();
 		return li10;
+=======
+		li = session.createQuery(hql).list();
+
+		return li;
+>>>>>>> cdc86973dce2f9924d05a416215b6f523eb30d1e
 	}
 	
 	

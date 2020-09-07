@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 import _00_init.util.GlobalService;
 import _01_register.model.MemberBean;
 import _01_register.service.MemberService;
-import _01_register.service.impl.MemberServiceImpl;
+import _01_register.service.impl.MemberServiceImpl_Hibernate;
 
 
 @WebServlet("/login/login.do")
@@ -101,7 +101,7 @@ public class LoginServlet extends HttpServlet {
 
 		// 4. 進行 Business Logic 運算
 		// 將MemberServiceImpl類別new為物件，存放物件參考的變數為 loginService
-		MemberService memberService = new MemberServiceImpl();
+		MemberService memberService = new MemberServiceImpl_Hibernate();
 
 		// 將密碼加密兩次，以便與存放在表格內的密碼比對
 		password = GlobalService.getMD5Endocing(GlobalService.encryptString(password));
@@ -134,7 +134,7 @@ public class LoginServlet extends HttpServlet {
 				return;
 			}
 		} else {
-			// 如果errorMsgMap不是空的，表示有錯誤，交棒給login.jsp
+			// 如果errorMsgMap不是空的，表示有錯誤，交棒給BSlogin.jsp
 			RequestDispatcher rd = request.getRequestDispatcher("BSlogin.jsp");
 			rd.forward(request, response);
 			return;

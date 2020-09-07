@@ -10,7 +10,7 @@ public interface MemberDao {
 
 	public int saveMember(MemberBean mb) ;
 	
-	public MemberBean queryMember(String id);
+	public MemberBean queryMember(Integer id);
 	
 	public MemberBean checkIdPassword(String userId, String password);	
 	

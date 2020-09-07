@@ -34,7 +34,7 @@ public class MemberDaoImpl_Jdbc implements MemberDao {
 		String sql = "INSERT INTO mem "
 				+ "(MemId, Email, PASSWORD, NAME, ID, Phone, Birth, "
 				+ "Sex, HeadPic,fileName,Levels,MeCreate,LoginTime) " + 
-				"VALUES (0, ?, ?, ?, ?, ?, ?, ?, ?, ?, 2, CURDATE(),NOW())";
+				"VALUES (0, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
 		int n = 0;
 		try (
 			Connection con = ds.getConnection(); 
@@ -51,9 +51,9 @@ public class MemberDaoImpl_Jdbc implements MemberDao {
 			ps.setString(7, mb.getSex());
 			ps.setBlob(8, mb.getHeadPic());
 			ps.setString(9, mb.getFileName());
-//			ps.setInt(12, mb.getLevels());
-//			ps.setDate(13, mb.getMeCreate());
-//			ps.setDate(14, mb.getLoginTime());
+			ps.setInt(10, mb.getLevels());
+			ps.setDate(11, mb.getMeCreate());
+			ps.setTimestamp(12, mb.getLoginTime());
 			n = ps.executeUpdate();
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -89,14 +89,14 @@ public class MemberDaoImpl_Jdbc implements MemberDao {
 	// 由參數 id (會員帳號) 到Member表格中 取得某個會員的所有資料，傳回值為一個MemberBean物件，
 	// 如果找不到對應的會員資料，傳回值為null。
 	@Override
-	public MemberBean queryMember(String id) {
+	public MemberBean queryMember(Integer id) {
 		MemberBean mb = null;
 		String sql = "SELECT * FROM mem WHERE memId = ?";
 		try (
 			Connection connection = ds.getConnection(); 
 			PreparedStatement ps = connection.prepareStatement(sql);
 		) {
-			ps.setString(1, id);
+			ps.setInt(1, id);
 			try (ResultSet rs = ps.executeQuery();) {
 				if (rs.next()) {
 					mb = new MemberBean();
@@ -112,7 +112,7 @@ public class MemberDaoImpl_Jdbc implements MemberDao {
 					mb.setFileName(rs.getString("filename"));
 					mb.setLevels(rs.getInt("levels"));
 					mb.setMeCreate(rs.getDate("meCreate"));
-					mb.setLoginTime(rs.getDate("loginTime"));
+					mb.setLoginTime(rs.getTimestamp("loginTime"));
 				}
 			}
 		} catch (SQLException ex) {
@@ -149,7 +149,7 @@ public class MemberDaoImpl_Jdbc implements MemberDao {
 					mb.setFileName(rs.getString("filename"));
 					mb.setLevels(rs.getInt("levels"));
 					mb.setMeCreate(rs.getDate("meCreate"));
-					mb.setLoginTime(rs.getDate("loginTime"));
+					mb.setLoginTime(rs.getTimestamp("loginTime"));
 				}
 			}
 		} catch (SQLException ex) {

@@ -22,10 +22,9 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import _00_init.util.GlobalService;
-import _00_init.util.SystemUtils2018;
 import _01_register.model.MemberBean;
 import _01_register.service.MemberService;
-import _01_register.service.impl.MemberServiceImpl;
+import _01_register.service.impl.MemberServiceImpl_Hibernate;
 
 @MultipartConfig(location = "", fileSizeThreshold = 5 * 1024 * 1024, maxFileSize = 1024 * 1024
 		* 500, maxRequestSize = 1024 * 1024 * 500 * 5)
@@ -33,6 +32,8 @@ import _01_register.service.impl.MemberServiceImpl;
 @WebServlet("/_01_register/register.do")
 public class RegisterServletMP extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	// 會員預設權限
+	private final Integer LEVELS = 1;
 	// 
 	// 設定密碼欄位必須由大寫字母、小寫字母、數字與 !@#$%!^'" 等四組資料組合而成，且長度不能小於八個字元
 	// 
@@ -62,6 +63,7 @@ public class RegisterServletMP extends HttpServlet {
 		String sex = "";
 		String birth ="";
 		Date date = null;
+		Date currentDate = new Date(System.currentTimeMillis());
 		long sizeInBytes = 0;
 		InputStream is = null;
 		// 取出HTTP multipart request內所有的parts
@@ -166,7 +168,7 @@ public class RegisterServletMP extends HttpServlet {
 			// MemberDaoImpl_Jdbc類別的功能：
 			// 1.檢查帳號是否已經存在，已存在的帳號不能使用，回傳相關訊息通知使用者修改
 			// 2.若無問題，儲存會員的資料
-			MemberService service = new MemberServiceImpl();
+			MemberService service = new MemberServiceImpl_Hibernate();
 			if (service.idExists(email)) {
 				errorMsg.put("errorIdDup", "此帳號已存在，請換新帳號");
 			} else {
@@ -178,14 +180,23 @@ public class RegisterServletMP extends HttpServlet {
 				if (is != null) {
 					blob = GlobalService.fileToBlob(is, sizeInBytes);
 				}
+				
+				// 取得當前時間
+				Timestamp registerTime = new Timestamp(System.currentTimeMillis()); 
+				
 				// 將所有會員資料封裝到MemberBean(類別的)物件
 				MemberBean mem = new MemberBean(0,email,password1,name,
-						memberId,phone,date,sex,blob,fileName);
+						memberId,phone,date,sex,blob,fileName,LEVELS,currentDate,registerTime);
+				
 				// 呼叫MemberDao的saveMember方法
 				int n = service.saveMember(mem);
 				if (n == 1) {
-					msgOK.put("InsertOK", "<Font color='red'>新增成功，請開始使用本系統</Font>");
-					response.sendRedirect("../index.jsp");
+//					msgOK.put("InsertOK", "<Font color='red'>新增成功，請開始使用本系統</Font>");
+					session.setAttribute("MemberBean", mem);
+//					response.sendRedirect("../index.jsp");
+					response.sendRedirect("/java014_01_Car98/register/verify.jsp");
+//					RequestDispatcher rd = request.getRequestDispatcher("/register/verify.jsp");
+//					rd.forward(request, response);
 					return;
 				} else {
 					errorMsg.put("errorIdDup", "新增此筆資料有誤(RegisterServlet)");

@@ -23,7 +23,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public MemberBean queryMember(String id) {
+	public MemberBean queryMember(Integer id) {
 		return dao.queryMember(id);
 	}
 	
