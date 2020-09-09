@@ -2,6 +2,7 @@
     
     border:2px solid white; 
     color:white;
+    
 }
 .col-12{
 /*     border:1px solid pink; */
@@ -14,57 +15,71 @@
 .col-10{
     height: 600px;
     border:2px solid white;
+    
 }
-img{
+.photo{
     width: 140px;
     height: 140px;
+    
 }
-.AAA{
+.picture{
+    width: 400px;
+    height: 300px;
+}
+.article-information{
     list-style: none;
     display: flex;
     padding-left: 0px;
+    font-size:19px;
 }
 .floor{
-    width: 300px;
+    width: 820px;
+    
+    
 /*     border:1px solid red; */
     
 }
 .author{
-    width: 200px;
     font-size:18px;
+    
 /*     border:2px solid white; */
 }
 .account{
-    width: 700px;
+    font-size:20px;
+   
 /*     border:1px solid olive; */
    
 }
 .gp{
     width: 50px;
+  
+    color: orangered;
 /*     border:1px solid palevioletred */
 }
 .bp{
     width: 50px;
+   
 /*     border:1px solid salmon; */
 }
-.BBB{
+.article-content{
     height: 450px;
-    font-size:20px;
+    font-size:23px;
 }
-.CCC{
+.article-mood{
     height: 60px;
-    font-size:20px;
+    font-size:16px;
 }
 .response{
     padding-right: 0px;
 }
-.DDD{
+.like-or-hate{
     list-style: none;
     display: flex;
+    
 }
-.EEE{
-   width: 80px;
+.fas{
+   width: 30px;
 }
-.FFF{
-    width: 650px;
+.fas{
+    width: 120px;
 }
