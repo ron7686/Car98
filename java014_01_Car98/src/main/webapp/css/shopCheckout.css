@@ -1,0 +1,32 @@
+/* for all page */
+.footer-bottom{
+  margin-top: 1em;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  
+  }
+.footer-bottom p.pull-left{
+  padding-top: 6px;
+  font-size: 0.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  }
+.bg-cover{
+  background-size: cover;
+  background-position: center center;
+  }
+  body{
+    background-image: url(../../image/Desktop.png);
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat:no-repeat;
+    background-size: cover;
+  }
+  table{
+    border: 1px solid #ccc;
+    width: 100%;
+  }
+  tr,td{
+    border: 1px solid #ccc;
+  }
