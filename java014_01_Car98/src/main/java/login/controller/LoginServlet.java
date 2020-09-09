@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -13,10 +14,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
+
 import _00_init.util.GlobalService;
 import _01_register.model.MemberBean;
 import _01_register.service.MemberService;
-import _01_register.service.impl.MemberServiceImpl_Hibernate;
 
 
 @WebServlet("/login/login.do")
@@ -101,7 +104,10 @@ public class LoginServlet extends HttpServlet {
 
 		// 4. 進行 Business Logic 運算
 		// 將MemberServiceImpl類別new為物件，存放物件參考的變數為 loginService
-		MemberService memberService = new MemberServiceImpl_Hibernate();
+//		MemberService memberService = new MemberServiceImpl_Hibernate();
+		ServletContext sc = getServletContext();
+		WebApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(sc);
+		MemberService memberService = ctx.getBean(MemberService.class);
 
 		// 將密碼加密兩次，以便與存放在表格內的密碼比對
 		password = GlobalService.getMD5Endocing(GlobalService.encryptString(password));

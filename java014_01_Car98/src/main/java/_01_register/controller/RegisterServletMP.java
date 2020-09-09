@@ -12,6 +12,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -21,10 +22,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
+
 import _00_init.util.GlobalService;
 import _01_register.model.MemberBean;
 import _01_register.service.MemberService;
-import _01_register.service.impl.MemberServiceImpl_Hibernate;
 
 @MultipartConfig(location = "", fileSizeThreshold = 5 * 1024 * 1024, maxFileSize = 1024 * 1024
 		* 500, maxRequestSize = 1024 * 1024 * 500 * 5)
@@ -168,7 +171,10 @@ public class RegisterServletMP extends HttpServlet {
 			// MemberDaoImpl_Jdbc類別的功能：
 			// 1.檢查帳號是否已經存在，已存在的帳號不能使用，回傳相關訊息通知使用者修改
 			// 2.若無問題，儲存會員的資料
-			MemberService service = new MemberServiceImpl_Hibernate();
+//			MemberService service = new MemberServiceImpl_Hibernate();
+			ServletContext sc = getServletContext();
+			WebApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(sc);
+			MemberService service = ctx.getBean(MemberService.class);
 			if (service.idExists(email)) {
 				errorMsg.put("errorIdDup", "此帳號已存在，請換新帳號");
 			} else {

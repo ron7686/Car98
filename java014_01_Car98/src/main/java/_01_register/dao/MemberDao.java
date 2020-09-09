@@ -15,6 +15,8 @@ public interface MemberDao {
 	public MemberBean checkIdPassword(String userId, String password);	
 	
 	public int updateLoginTime(String id);
+	
+	public int updateUserData(MemberBean mb);
 
 	public void setConnection(Connection con);
 }

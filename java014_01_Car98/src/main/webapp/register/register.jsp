@@ -52,7 +52,7 @@ input[type="submit"]:disabled {
 <body class="bg-dark">
 	<jsp:include page="../fragment/topIndex.jsp"></jsp:include>
 	<form class="needs-validation mx-5 text-white" novalidate method="post"
-		action="/java014_01_Car98/_01_register/register.do"
+		action="<c:url value='/java014_01_Car98/_01_register/register.do'/>"
 		enctype="multipart/form-data">
 		<div class="form-row my-5 w-50">
 			<div class="col-md-4 mt-5 mb-2">
