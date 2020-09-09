@@ -1,3 +1,4 @@
+
 package talk.util;
 
 import org.hibernate.SessionFactory;

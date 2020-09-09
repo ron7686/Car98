@@ -34,12 +34,18 @@ public class TalkDao {
 		}
 	}
 	@SuppressWarnings("unchecked")
-	public List<TalkBean> getAll(){
+	public List<TalkBean> getAll(int page){
+		int getpage=(page-1)*10;
 		List<TalkBean> li = new ArrayList<>();
 		String hql = "FROM TalkBean";
 		Session session = factory.getCurrentSession();
-		li = session.createQuery(hql).list();
-		return li;
+		li=session.createQuery(hql).list();
+		List<TalkBean> li10=new ArrayList<>();
+		for(int i=getpage;i<getpage+10&&i<li.size();i++) {
+			li10.add(li.get(i));
+		}
+		//li = session.createQuery(hql).list();
+		return li10;
 	}
 	
 	

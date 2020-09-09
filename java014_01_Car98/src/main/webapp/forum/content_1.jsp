@@ -21,7 +21,7 @@
             </div>
             <div class="form-group">
               <label for="exampleFormControlTextarea1"> textarea</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="text" value="${param.text}"></textarea>
+              <input type="text" class="form-control" id="exampleFormControlTextarea1" rows="3" name="text" value="${param.text}">
             </div>
             <input type="submit" value="發佈"/>
           </form>

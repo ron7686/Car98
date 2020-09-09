@@ -29,8 +29,8 @@ import _01_register.service.impl.MemberServiceImpl_Hibernate;
 @MultipartConfig(location = "", fileSizeThreshold = 5 * 1024 * 1024, maxFileSize = 1024 * 1024
 		* 500, maxRequestSize = 1024 * 1024 * 500 * 5)
 
-@WebServlet("/_01_register/register.do")
-public class RegisterServletMP extends HttpServlet {
+@WebServlet("/_01_register/update.do")
+public class UpdateUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	// 會員預設權限
 	private final Integer LEVELS = 1;
@@ -63,7 +63,7 @@ public class RegisterServletMP extends HttpServlet {
 		String sex = "";
 		String birth ="";
 		Date date = null;
-		Date currentDate = new Date(System.currentTimeMillis());
+		Date registerDate = new Date(System.currentTimeMillis());
 		long sizeInBytes = 0;
 		InputStream is = null;
 		// 取出HTTP multipart request內所有的parts
@@ -182,11 +182,11 @@ public class RegisterServletMP extends HttpServlet {
 				}
 				
 				// 取得當前時間
-				Timestamp registerTime = new Timestamp(System.currentTimeMillis()); 
+				Timestamp loginTime = new Timestamp(System.currentTimeMillis()); 
 				
 				// 將所有會員資料封裝到MemberBean(類別的)物件
 				MemberBean mem = new MemberBean(0,email,password1,name,
-						memberId,phone,date,sex,blob,fileName,LEVELS,currentDate,registerTime);
+						memberId,phone,date,sex,blob,fileName,LEVELS,loginTime);
 				
 				// 呼叫MemberDao的saveMember方法
 				int n = service.saveMember(mem);
