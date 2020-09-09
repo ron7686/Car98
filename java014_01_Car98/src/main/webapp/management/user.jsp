@@ -52,8 +52,8 @@ input[type="submit"]:disabled {
 
 <body class="bg-dark">
 	<jsp:include page="../fragment/topIndex.jsp"></jsp:include>
-	<form class="needs-validation mx-5 text-white" novalidate method="post"
-		action="/java014_01_Car98/_01_register/register.do"
+	<form class="needs-validation mx-5 text-white" novalidate method="POST"
+		action="<c:url value='/_01_register/update.do'/>"
 		enctype="multipart/form-data">
 		<div class="col-md-3 mt-5 p-1">
 			<div class="form-group">
@@ -101,7 +101,7 @@ input[type="submit"]:disabled {
 				type="email" class="form-control" id="exampleInputEmail1"
 				value="${memberBean.email}" name="email"
 				aria-describedby="emailHelp" placeholder="Enter email"
-				pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" required>
+				pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" disabled="disabled" required>
 			<small id="emailHelp" class="form-text text-muted">We'll
 				never share your email with anyone else.</small>
 			<div class="invalid-feedback">請輸入正確的email</div>
@@ -113,48 +113,48 @@ input[type="submit"]:disabled {
 				<label for="validationCustom03">生日: </label> <input type="date"
 					class="form-control" id="validationCustom03" name="birth"
 					value="${memberBean.birth}" placeholder="YYYY-MM-DD"
-					pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" required>
+					pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" disabled="disabled" required>
 				<div class="invalid-feedback">請選擇日期</div>
 				<font color="red" size="-1">${ErrorMsg.errorBirth}</font>
 			</div>
-			<!-- 			<div class="col-md-3 mt-3"> -->
-			<!-- 				<label for="validationCustom04">性別: </label> -->
-			<!-- 				<div class="form-check form-check-inline"> -->
-			<!-- 					<input class="form-check-input" type="radio" name="gridRadios" -->
-			<!-- 						id="gridRadios1" value="M"> <label -->
-			<!-- 						class="form-check-label text-primary" for="gridRadios1"> 男 -->
-			<!-- 					</label> -->
-			<!-- 				</div> -->
-			<!-- 				<div class="form-check form-check-inline"> -->
-			<!-- 					<input class="form-check-input" type="radio" name="gridRadios" -->
-			<!-- 						id="gridRadios2" value="F"> <label -->
-			<!-- 						class="form-check-label text-danger" for="gridRadios2"> 女 -->
-			<!-- 					</label> -->
-			<!-- 				</div> -->
-			<%-- 					<font color="red" size="-1">${MsgMap.errorSex}</font> --%>
+						<div class="col-md-3 mt-3">
+							<label for="validationCustom04">性別: </label>
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="radio" name="gridRadios"
+									id="gridRadios1" value="M"  ${memberBean.sex =="M" ? "checked='checked'" : ""}> <label
+									class="form-check-label text-primary" for="gridRadios1"> 男
+								</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="radio" name="gridRadios"
+									id="gridRadios2" value="F" ${memberBean.sex =="F" ? "checked='checked'" : ""}> <label
+									class="form-check-label text-danger" for="gridRadios2"> 女
+								</label>
+							</div>
+								<font color="red" size="-1">${MsgMap.errorSex}</font>
 
-			<!-- 			</div> -->
+						</div>
 		</div>
 
-		<div class="form-group w-50">
-			密碼 <input type="password" id="pwdId" class="form-control"
-				value="memberBean.password" name="password"
-				pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}"
-				required>
-			<div class="valid-feedback">符合規則</div>
-			<div class="invalid-feedback">需包含大小字母、數字、特殊符號、8個字符</div>
-			<font color="red" size="-1">${ErrorMsg.passwordError}</font>
-		</div>
-		<div class="form-group w-50">
-			確認密碼 <input type="password" id="cPwdId"
-				class="form-control myCpwdClass" value="${param.memberPassword}"
-				name="password1"
-				pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}"
-				required>
-			<div id="cPwdValid" class="valid-feedback">密碼相符</div>
-			<div id="cPwdInvalid" class="invalid-feedback">密碼不相同</div>
-			<font color="red" size="-1">${MsgMap.passwordError}${MsgMap.errorPassword1Empty}</font>
-		</div>
+<!-- 		<div class="form-group w-50"> -->
+<!-- 			密碼 <input type="password" id="pwdId" class="form-control" -->
+<!-- 				value="memberBean.password" name="password" -->
+<!-- 				pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}" -->
+<!-- 				required> -->
+<!-- 			<div class="valid-feedback">符合規則</div> -->
+<!-- 			<div class="invalid-feedback">需包含大小字母、數字、特殊符號、8個字符</div> -->
+<%-- 			<font color="red" size="-1">${ErrorMsg.passwordError}</font> --%>
+<!-- 		</div> -->
+<!-- 		<div class="form-group w-50"> -->
+<!-- 			確認密碼 <input type="password" id="cPwdId" -->
+<!-- 				class="form-control myCpwdClass" value="memberBean.password" -->
+<!-- 				name="password1" -->
+<!-- 				pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}" -->
+<!-- 				required> -->
+<!-- 			<div id="cPwdValid" class="valid-feedback">密碼相符</div> -->
+<!-- 			<div id="cPwdInvalid" class="invalid-feedback">密碼不相同</div> -->
+<%-- 			<font color="red" size="-1">${MsgMap.passwordError}${MsgMap.errorPassword1Empty}</font> --%>
+<!-- 		</div> -->
 
 		<button class="btn btn-secondary" id="button" type="submit">確認送出</button>
 	</form>
@@ -190,8 +190,8 @@ input[type="submit"]:disabled {
           image.src = this.result;
 
           // image.width = 500 ;
-          image.style.maxWidth = "300px"; //css屬性
-          image.style.maxHeight = "300px";
+          image.style.maxWidth = "350px"; //css屬性
+          image.style.maxHeight = "350px";
         });
       });
     </script>

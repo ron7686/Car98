@@ -184,5 +184,10 @@ public class MemberDaoImpl_Jdbc implements MemberDao {
 		}
 		return n;
 	}
+	@Override
+	public int updateUserData(MemberBean mb) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 }
