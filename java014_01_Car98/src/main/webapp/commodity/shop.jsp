@@ -249,7 +249,7 @@
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Order now</button>
+					<a href="./shopCheckout.jsp" type="button" class="btn btn-primary">Order now</a>
 				</div>
 			</div>
 		</div>

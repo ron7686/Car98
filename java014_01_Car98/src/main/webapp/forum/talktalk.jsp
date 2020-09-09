@@ -90,6 +90,7 @@
                 <li class="gp">讚12</li>
                 <li class="bp">噓18</li>
               </ul>
+              
               <div class="col-12 BBB">
                     ${TalkBean.postText}
                     <img src="https://picsum.photos/id/222/500/600" alt=""><br>
@@ -102,6 +103,7 @@
                     </ul>
                   </div>
                 </div>
+                
                 <div class="col-2">
                   <a href="#"><img src="../image/熱巴.jpg"></a>
                   <div class="text-white">迪麗熱巴</div>
@@ -129,6 +131,7 @@
                       </ul>
                    </div>
                 </div>
+                
                 <div class="col-2">
                   <a href="#"><img src="../image/Shirahoshi.png"></a>
                   <div class="text-white">白星公主</div>
