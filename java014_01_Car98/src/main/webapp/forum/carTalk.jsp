@@ -109,8 +109,15 @@
             <div class="col-12 publish">
                 <nav aria-label="Page navigation example " class="publishitem">
                     <ul class="pagination justify-content-end ">
+<<<<<<< HEAD
                         <button class="btn text-white bg-primary mr-auto ml-1" onclick="window.location.href='talkContent.jsp'">發帖<i class="fas fa-angle-down"></i></a></button>
                       <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/forum/talktop.do?pageNo=${pageNo+1}">1</a></li>
+=======
+
+                        <button class="btn text-white bg-primary mr-auto ml-1" onclick="window.location.href='talkContent.jsp'">發帖<i class="fas fa-angle-down"></i></a></button>
+                      <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/forum/talktop.do?pageNo=${pageNo+1}">1</a></li>
+
+>>>>>>> 2824a698ea95023924a2f45080171a64c26619ec
                       <li class="page-item mt-2"><a href=""><i class="fas fa-caret-left"></i><i class="fas fa-caret-left"></i><i class="fas fa-caret-left"></i><i class="fas fa-caret-left"></i><i class="fas fa-caret-left"></i></a></li>
                       <li class="page-item"><a class="page-link" href="#">2</a></li>
                       <li class="page-item " aria-current="page"><a class="page-link" href="#">3</a></li>
