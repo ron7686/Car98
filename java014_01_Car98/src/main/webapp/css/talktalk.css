@@ -18,8 +18,9 @@
     
 }
 .photo{
-    width: 140px;
-    height: 140px;
+	overflow:hidden;
+   max-width: 140px;
+    max-height: 140px;
     
 }
 .picture{
@@ -82,4 +83,8 @@
 }
 .fas{
     width: 120px;
+}
+.headpic{
+	border:1px solid red;
+	overflow:hidden;
 }

@@ -89,7 +89,7 @@ body {
 			<div class="col-12 text-white">${TalkBean.postTitle}</div>
 			<!-- 作者資訊 -->
 			<div class="col-2">
-				<br> <a href="#"><img class="photo" src="../image/喬巴1.jpg"></a>
+				<div> <a href="#"><img class="photo" src="../image/喬巴1.jpg"></a></div>
 				<div class="author">多尼多尼喬巴</div>
 				<div class="account">zzz94572</div>
 
@@ -117,7 +117,7 @@ body {
 			</div>
 			<!-- 作者資訊 -->
 			<div class="col-2">
-				<br> <a href="#"><img class="photo" src="../image/熱巴.jpg"></a>
+				<div class="headpic"> <a href="#"><img class="photo" src="../image/熱巴.jpg"></a></div>
 				<div class="author">迪麗熱巴</div>
 				<div class="account">reba0603</div>
 			</div>
@@ -187,7 +187,7 @@ body {
 		<div class="row">
 			<div class="col-12 mt-2">
 				<form class="comment">
-					<textarea class="" cols="68" rows="5" placeholder="請輸入內容...."></textarea>
+					<textarea class="" cols="68" rows="5" style="width:100%"  placeholder="請輸入內容...."></textarea>
 					<input type="file" class="form-control-file"
 						id="exampleFormControlFile1"> <input class="float-right"
 						type="submit" value="送出">

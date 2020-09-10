@@ -1,21 +1,22 @@
 package talk.controller;
 
 import java.io.IOException;
-import java.lang.ProcessBuilder.Redirect;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import talk.dao.TalkDao;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
+
 import talk.model.TalkBean;
-import talk.service.TalkService;
+import talk.service.ITalkService;
 
 @WebServlet("/forum/talk.do")
 public class TalkServlet extends HttpServlet {
@@ -39,7 +40,11 @@ public class TalkServlet extends HttpServlet {
 		if(errorMessage.isEmpty()) {
 			TalkBean tb=new TalkBean(PostID, PostTitle, PostText);
 			try {
-				TalkService service=new TalkService();
+//				ITalkService service=new TalkService();
+				ServletContext sc=getServletContext();
+				WebApplicationContext ctx= WebApplicationContextUtils.getWebApplicationContext(sc);
+				ITalkService service=ctx.getBean(ITalkService.class);
+				
 				service.persist(tb);
 				request.setAttribute("TalkBean", tb);
 				RequestDispatcher rd=request.getRequestDispatcher("/forum/talktalk.jsp");
