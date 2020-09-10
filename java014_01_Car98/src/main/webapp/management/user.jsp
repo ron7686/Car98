@@ -137,8 +137,8 @@ input[type="submit"]:disabled {
 		</div>
 
 <!-- 		<div class="form-group w-50"> -->
-<!-- 			密碼 <input type="password" id="pwdId" class="form-control" -->
-<!-- 				value="memberBean.password" name="password" -->
+<!-- 			密碼 <input type="text" id="pwdId" class="form-control" -->
+<%-- 				value="${memberBean.password}" name="password" --%>
 <!-- 				pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}" -->
 <!-- 				required> -->
 <!-- 			<div class="valid-feedback">符合規則</div> -->
@@ -146,8 +146,8 @@ input[type="submit"]:disabled {
 <%-- 			<font color="red" size="-1">${ErrorMsg.passwordError}</font> --%>
 <!-- 		</div> -->
 <!-- 		<div class="form-group w-50"> -->
-<!-- 			確認密碼 <input type="password" id="cPwdId" -->
-<!-- 				class="form-control myCpwdClass" value="memberBean.password" -->
+<!-- 			確認密碼 <input type="text" id="cPwdId" -->
+<%-- 				class="form-control myCpwdClass" value="${memberBean.password}" --%>
 <!-- 				name="password1" -->
 <!-- 				pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}" -->
 <!-- 				required> -->
