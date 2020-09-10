@@ -37,4 +37,10 @@ public class MemberServiceImpl implements MemberService {
 	public int updateLoginTime(String id) {
 		return dao.updateLoginTime(id);
 	}
+
+	@Override
+	public int updateUserData(MemberBean mb) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

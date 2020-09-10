@@ -8,4 +8,5 @@ public interface MemberService {
 	MemberBean queryMember(Integer id);
 	MemberBean checkIdPassword(String userId, String password) ;
 	int updateLoginTime (String id);
+	int updateUserData(MemberBean mb);
 }

@@ -18,7 +18,7 @@
 		id="navbarNavDropdown">
 		<ul class="navbar-nav ml-auto">
 			<li class="nav-item dropdown"><a
-				class="nav-link dropdown-toggle" href="#"
+				class="nav-link" href="#"
 				id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
 				aria-haspopup="true" aria-expanded="false"> Car好康 </a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -27,7 +27,7 @@
 						href="#">搜尋停車位</a>
 				</div>
 			<li class="nav-item dropdown"><a
-				class="nav-link dropdown-toggle" href="/carEasy.html"
+				class="nav-link" href="/carEasy.html"
 				id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
 				aria-haspopup="true" aria-expanded="false"> Car方便 </a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -37,7 +37,7 @@
 				</div></li>
 			<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/Rent/carRent.jsp">Car租車</a></li>
 			<li class="nav-item dropdown"><a
-				class="nav-link dropdown-toggle" href="#"
+				class="nav-link" href="#"
 				id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
 				aria-haspopup="true" aria-expanded="false"> Car帳單 </a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -67,7 +67,7 @@
 
 	<c:if test="${! empty LoginOK }">
 		<a class="navbar-brand" href="${pageContext.request.contextPath}/_01_register/management.do"><img
-			style="width: 40px; height: 40px; border-radius: 50%;"
+			style="width: 50px; height: 50px; border-radius: 50%;"
 			src='${pageContext.request.contextPath}/_00_init/getMemberImage?id=${LoginOK.memId}'>
 		</a>
 

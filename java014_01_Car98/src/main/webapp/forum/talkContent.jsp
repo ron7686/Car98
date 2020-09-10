@@ -120,10 +120,10 @@ body {
 				<!-- 內文輸入 -->
 				<div class="col-9">
 					<form class="mt-3" action="talk.do" method="Post">
-						<input class="title" type="text"  name="title"
+						<input class="title" type="text"  name="title" style="width:100%"
 							placeholder="請輸入文章標題......." value="${param.title}">
 							<span class="errormsg"><b>${ErrorMsgKey.TitleEmptyError}</b></span>
-						<textarea class="mt-2" name="text" id="article" cols="100" rows="20" placeholder="請輸入內容......" >${param.text}</textarea>
+						<textarea class="mt-2" name="text" id="article" style="width:100%" cols="100" rows="20" placeholder="請輸入內容......" >${param.text}</textarea>
 						<span class="errormsg"><b>${ErrorMsgKey.TextEmptyError}</b></span>
 						<input type="submit" value="發佈文章" class="publish">
 					</form>

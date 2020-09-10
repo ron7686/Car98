@@ -1,5 +1,5 @@
 .container{
-    height: 900px;
+/*     height: 900px; */
     border:2px solid white;
 }
 
@@ -98,4 +98,8 @@ margin-top: 10px;
 .time{
     color:white;
 }
+.content{
+    height: 100%;
+}
+
 

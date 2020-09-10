@@ -12,7 +12,8 @@ import _00_init.util.HibernateUtils;
  * Application Lifecycle Listener implementation class CreateSessionFactoryListener
  *
  */
-@WebListener
+// Spring 拿掉
+//@WebListener
 public class CreateSessionFactoryListener implements ServletContextListener {
 	SessionFactory factory ;
 	
