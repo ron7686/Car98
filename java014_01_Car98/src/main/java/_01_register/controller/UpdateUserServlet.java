@@ -35,14 +35,12 @@ import _01_register.service.MemberService;
 @WebServlet("/_01_register/update.do")
 public class UpdateUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	// 會員預設權限
-	private final Integer LEVELS = 1;
 	// 
 	// 設定密碼欄位必須由大寫字母、小寫字母、數字與 !@#$%!^'" 等四組資料組合而成，且長度不能小於八個字元
 	// 
-	private static final String PASSWORD_PATTERN = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%!^'\"]).{8,})";
-	private Pattern pattern = null;
-	private Matcher matcher = null;
+//	private static final String PASSWORD_PATTERN = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%!^'\"]).{8,})";
+//	private Pattern pattern = null;
+//	private Matcher matcher = null;
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		request.setCharacterEncoding("UTF-8"); // 文字資料轉內碼
@@ -109,14 +107,10 @@ public class UpdateUserServlet extends HttpServlet {
 //					errorMsg.put("errorPasswordEmpty", "*");
 //				}
 //			}
-			name = request.getParameter("name");
-			
-			
-			email = request.getParameter("email");
-			
-			phone = request.getParameter("phone");
-			
 			sex = request.getParameter("gridRadios");
+			name = request.getParameter("name");	
+			phone = request.getParameter("phone");
+
 		
 
 		} else {
@@ -161,13 +155,17 @@ public class UpdateUserServlet extends HttpServlet {
 					blob = GlobalService.fileToBlob(is, sizeInBytes);
 				}
 				
-				// 取得當前時間
-				Timestamp loginTime = new Timestamp(System.currentTimeMillis()); 
 				
 				// 將所有會員資料封裝到MemberBean(類別的)物件
 				MemberBean mb = (MemberBean) session.getAttribute("LoginOK");
 				
 				mb.setName(name);
+				if(blob!=null) {
+					mb.setHeadPic(blob);					
+				}
+				mb.setId(memberId);
+				mb.setPhone(phone);
+				mb.setSex(sex);
 				// 呼叫MemberDao的saveMember方法
 				int n = service.updateUserData(mb);
 				if (n == 1) {
