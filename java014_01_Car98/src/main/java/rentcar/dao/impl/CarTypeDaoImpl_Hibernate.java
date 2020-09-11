@@ -23,7 +23,7 @@ public class CarTypeDaoImpl_Hibernate implements CarTypeDao {
 	public Collection<CarTypeBean> getCarTypeData(){
 		String hql = "FROM CarTypeBean";
 		Session session = factory.getCurrentSession();
-		List<CarTypeBean> carTypeBean = session.createQuery(hql).list();
+		Collection<CarTypeBean> carTypeBean = session.createQuery(hql).list();
 		return carTypeBean;
     }
 	

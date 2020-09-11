@@ -71,31 +71,26 @@
       <div class="mainitem">汽 車</div>
       <div class="row">
         <div class="col-md-4">
-          <form action="">車型：
-            <select name="car" id="caritem" style="width: 250px">
-              <option value="selectmodel">選擇車型</option>
-              <optgroup label="BENZ">
-                <option value="model1">C100</option>
-                <option value="model2">C200</option>
-                <option value="model3">C300</option>
+          <form action="">地區：
+            <select name="area" id="areaitem" style="width: 250px">
+              <option value="selectarea">選擇地區</option>
+              <optgroup label="台北市">
+                <option value="dist1">內湖</option>
+                <option value="dist2">中山</option>
+                <option value="dist3">萬華</option>
               </optgroup>
-              <optgroup label="BMW">
-                <option value="model4">320i</option>
-                <option value="model5">520i</option>
-                <option value="model6">720i</option>
-              </optgroup>
-              <optgroup label="AUDI">
-                <option value="model7">A6</option>
-                <option value="model8">A7</option>
-                <option value="model9">A8</option>
+              <optgroup label="新北市">
+                <option value="dist5">樹林</option>
+                <option value="dist6">板橋</option>
+                <option value="dist7">中和</option>
+                <option value="dist8">汐止</option>
               </optgroup>
             </select>
           </form>
-
         </div>
         <div class="col-md-4">
           <form action="">價格：
-            <select class="select" name="price" id="priceitem" style="width: 250px">
+            <select name="price" id="priceitem" style="width: 250px">
               <option value="selectprice">選擇價格</option>
               <optgroup label="平日時租">
                 <option value="weekHour1">100以下</option>
@@ -125,19 +120,23 @@
           </form>
         </div>
         <div class="col-md-4">
-          <form>搜尋：
-            <select class="select" name="area" id="searchitem" style="width: 250px">
-              <option value="selectarea">搜尋地區</option>
-              <optgroup label="台北市">
-                <option value="dist1">內湖</option>
-                <option value="dist2">中山</option>
-                <option value="dist3">萬華</option>
+          <form action="">車型：
+            <select name="car" id="caritem" style="width: 250px">
+              <option value="selectmodel">選擇車型</option>
+              <optgroup label="BENZ">
+                <option value="model1">C100</option>
+                <option value="model2">C200</option>
+                <option value="model3">C300</option>
               </optgroup>
-              <optgroup label="新北市">
-                <option value="dist5">樹林</option>
-                <option value="dist6">板橋</option>
-                <option value="dist7">中和</option>
-                <option value="dist8">汐止</option>
+              <optgroup label="BMW">
+                <option value="model4">320i</option>
+                <option value="model5">520i</option>
+                <option value="model6">720i</option>
+              </optgroup>
+              <optgroup label="AUDI">
+                <option value="model7">A6</option>
+                <option value="model8">A7</option>
+                <option value="model9">A8</option>
               </optgroup>
             </select>
           </form>

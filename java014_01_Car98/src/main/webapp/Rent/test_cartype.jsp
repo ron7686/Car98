@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<jsp:useBean id="carType" class="rentcar.service.impl.CarTypeServiceImpl" />
+<%-- <jsp:useBean id="carType" class="rentcar.service.impl.CarTypeServiceImpl" /> --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -20,7 +20,7 @@
 					<th width='120'>平日日租</th>
 					<th width='120'>價日日租</th>
 				</tr>
-				<c:forEach var="aBean" items="${carType.queryCarTypeData}">
+				<c:forEach var="aBean" items="${CarTypeData}">
 					<tr>
 						<td>${aBean.carBrand}</td>
 						<td>${aBean.carType}</td>
