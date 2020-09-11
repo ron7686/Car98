@@ -35,7 +35,7 @@
 						class="dropdown-item" href="#">保養紀錄</a> <a class="dropdown-item"
 						href="#">保險紀錄</a>
 				</div></li>
-			<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/Rent/carRent.jsp">Car租車</a></li>
+			<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/rent/carRent.jsp">Car租車</a></li>
 			<li class="nav-item dropdown"><a
 				class="nav-link" href="#"
 				id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
