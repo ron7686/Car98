@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Collection;
+import java.util.List;
+import java.util.Vector;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -28,58 +31,39 @@ public class CarTypeDaoImpl implements CarTypeDao {
 			throw new RuntimeException("CarTypeDaoImpl_Jdbc類別#建構子發生例外:：" + ex.getMessage());
 		}
 	}
-
+	
+	private static final String SELECT_ALL = "SELECT typeId, rentId, carBrand, carType, weekdayHourly, holidayHourly, weekdayDaily, holidayDaily FROM cartype";
 	@Override
-	public CarTypeBean queryCarTypeData(Integer typeId, 
-			Integer rentId, 
-			String carType, 
-			Integer weekdayHourly, 
-			Integer holidayHourly, 
-			Integer weekdayDaily, 
-			Integer holidayDaily) {
-		CarTypeBean ctb = null;
-		String sql = "SELECT * FROM cartype c WHERE c.typeId = ? "
-				   + " and c.rentId = ? "
-				   + " and c.carType = ? "
-				   + " and c.weekdayHourly = ? "
-				   + " and c.holidayHourly = ? "
-				   + " and c.weekdayDaily = ? "
-				   + " and c.holidayDaily = ? ";
+	public Collection<CarTypeBean> getCarTypeData(){
+		List<CarTypeBean> result = null;
 		try (
-			Connection connection = ds.getConnection(); 
-			PreparedStatement ps = connection.prepareStatement(sql);
+			Connection connection = ds.getConnection();
+			PreparedStatement ps = connection.prepareStatement(SELECT_ALL);
+			ResultSet rs = ps.executeQuery();
 		) {
-			ps.setInt(1, typeId);
-			ps.setInt(2, rentId);
-			ps.setString(3, carType);
-			ps.setInt(4, weekdayHourly);
-			ps.setInt(5, holidayHourly);
-			ps.setInt(6, weekdayDaily);
-			ps.setInt(7, holidayDaily);
-			
-			try (ResultSet rs = ps.executeQuery();) {
-				if (rs.next()) {
-					ctb = new CarTypeBean();
+			result = new Vector<>();
+				while (rs.next()) {
+					CarTypeBean ctb = new CarTypeBean();
 					ctb.setTypeId(rs.getInt("typeId"));
 					ctb.setRentId(rs.getInt("rentId"));
+					ctb.setCarBrand(rs.getString("carBrand"));
 					ctb.setCarType(rs.getString("carType"));
 					ctb.setWeekdayHourly(rs.getInt("weekdayHourly"));
 					ctb.setHolidayHourly(rs.getInt("holidayHourly"));
 					ctb.setWeekdayDaily(rs.getInt("weekdayDaily"));
 					ctb.setHolidayDaily(rs.getInt("holidayDaily"));
-							
-				}
+					result.add(ctb);				
 			}
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 			throw new RuntimeException("CarTypeDaoImpl_Jdbc類別#queryCarTypeData()發生例外： " 
 					+ ex.getMessage());
 		}
-		return null;
+		return result;
     }
 	
-	@Override
-	public void setConnection(Connection con) {
-		
-	}
+//	@Override
+//	public void setConnection(Connection con) {
+//		
+//	}
 }
