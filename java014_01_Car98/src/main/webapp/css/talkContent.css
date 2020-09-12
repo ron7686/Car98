@@ -8,18 +8,18 @@
    display: flex;
 }
 .title{
-    border:2px solid red;
+/*     border:2px solid red; */
     width:400px;
 }
 .select{
-    border:2px solid red;
+/*     border:2px solid red; */
     height: 30px;
 }
 
 
 .col-9{
     
-    border:1px solid green;
+    border:2px solid white;
 }
 .col-3{
     float: right;

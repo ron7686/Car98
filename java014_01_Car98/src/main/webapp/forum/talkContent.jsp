@@ -115,15 +115,17 @@ body {
 					</button>
 
 
-					
+
 				</div>
 				<!-- 內文輸入 -->
 				<div class="col-9">
 					<form class="mt-3" action="talk.do" method="Post">
-						<input class="title" type="text"  name="title" style="width:100%"
-							placeholder="請輸入文章標題......." value="${param.title}">
-							<span class="errormsg"><b>${ErrorMsgKey.TitleEmptyError}</b></span>
-						<textarea class="mt-2" name="text" id="article" style="width:100%" cols="100" rows="20" placeholder="請輸入內容......" >${param.text}</textarea>
+						<input class="title" type="text" name="title" style="width: 100%"
+							placeholder="請輸入文章標題......." value="${param.title}"> <span
+							class="errormsg"><b>${ErrorMsgKey.TitleEmptyError}</b></span>
+						<textarea class="mt-2" name="text" id="article"
+							style="width: 100%" cols="100" rows="20"
+							placeholder="請輸入內容......">${param.text}</textarea>
 						<span class="errormsg"><b>${ErrorMsgKey.TextEmptyError}</b></span>
 						<input type="submit" value="發佈文章" class="publish">
 					</form>
@@ -133,23 +135,52 @@ body {
 					<ul class="annex ">
 						<li>
 							<form>
-								<div class="form-group">
+								<div class="form-group ">
 									<img src="../image/view.jpeg" width="50" height="50"> <label
 										for="exampleFormControlFile1">插入圖片</label> <input type="file"
-										class="form-control-file" id="exampleFormControlFile1">
+										class="form-control-file mt-2" id="exampleFormControlFile1"
+										value="插入圖片">
 								</div>
 							</form>
 						</li>
 						<li>
 							<div>
-								<form>
-									<div class="form-group">
-										<img src="../image/film.jpg" alt="" width="50" height="50">
-										<label for="exampleFormControlFile1">插入影片＆連結</label> <input
-											type="file" class="form-control-file"
-											id="exampleFormControlFile1">
+								<img src="../image/film.jpg" alt="" width="50" height="50">插入影片<br>
+								<button type="button" class="btn btn-light mt-2"
+									data-toggle="modal" data-target="#exampleModal"
+									data-whatever="@mdo">選擇影片</button>
+								<div class="modal fade " id="exampleModal" tabindex="-1"
+									role="dialog" aria-labelledby="exampleModalLabel"
+									aria-hidden="true">
+									<div class="modal-dialog " role="document">
+										<div class="modal-content bg-dark">
+											<div class="modal-header">
+												<h5 class="modal-title" id="exampleModalLabel">
+													<i class="fas fa-angle-double-right"></i>嵌入影片
+												</h5>
+												<button type="button" class="close" data-dismiss="modal"
+													aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												</button>
+											</div>
+											<div class="modal-body bg-dark">
+												<form>
+													<div class="form-group bg-dark">
+														<label for="recipient-name" class="col-form-label bg-dark"></label>
+														<input type="text" class="form-control"
+															id="recipient-name" placeholder="影片網址或嵌入碼">
+													</div>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-secondary"
+													data-dismiss="modal">關閉</button>
+												<button type="button" class="btn btn-primary">插入影片</button>
+											</div>
+											</form>
+										</div>
 									</div>
-								</form>
+								</div>
+
 							</div>
 						</li>
 					</ul>
