@@ -35,7 +35,7 @@ public class CarTypeDaoImpl implements CarTypeDao {
 	private static final String SELECT_ALL = "SELECT typeId, rentId, carBrand, carType, weekdayHourly, holidayHourly, weekdayDaily, holidayDaily FROM cartype";
 	@Override
 	public Collection<CarTypeBean> getCarTypeData(){
-		List<CarTypeBean> result = null;
+		Collection<CarTypeBean> result = null;
 		try (
 			Connection connection = ds.getConnection();
 			PreparedStatement ps = connection.prepareStatement(SELECT_ALL);
