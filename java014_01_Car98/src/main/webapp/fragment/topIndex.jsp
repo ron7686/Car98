@@ -18,7 +18,7 @@
 		id="navbarNavDropdown">
 		<ul class="navbar-nav ml-auto">
 			<li class="nav-item dropdown"><a
-				class="nav-link dropdown-toggle" href="#"
+				class="nav-link" href="#"
 				id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
 				aria-haspopup="true" aria-expanded="false"> Car好康 </a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -27,7 +27,7 @@
 						href="#">搜尋停車位</a>
 				</div>
 			<li class="nav-item dropdown"><a
-				class="nav-link dropdown-toggle" href="/carEasy.html"
+				class="nav-link" href="/carEasy.html"
 				id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
 				aria-haspopup="true" aria-expanded="false"> Car方便 </a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -35,9 +35,9 @@
 						class="dropdown-item" href="#">保養紀錄</a> <a class="dropdown-item"
 						href="#">保險紀錄</a>
 				</div></li>
-			<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/Rent/carRent.jsp">Car租車</a></li>
+			<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/rent/carRent.jsp">Car租車</a></li>
 			<li class="nav-item dropdown"><a
-				class="nav-link dropdown-toggle" href="#"
+				class="nav-link" href="#"
 				id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
 				aria-haspopup="true" aria-expanded="false"> Car帳單 </a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">

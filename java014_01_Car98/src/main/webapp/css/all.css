@@ -21,6 +21,8 @@ background-position: center center;
 /**********
 information
 **********/
+.dropdown-menu li:hover .sub-menu {visibility: visible;}
+.dropdown:hover .dropdown-menu {display: block;}
 
 .information-card {
   padding: 60px 30px 0px;
