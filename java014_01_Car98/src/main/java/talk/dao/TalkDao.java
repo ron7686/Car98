@@ -2,6 +2,7 @@ package talk.dao;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -52,6 +53,7 @@ public class TalkDao  {
 			ex.printStackTrace();
 			throw new RuntimeException(ex);
 		}
+		Collections.reverse(li);
 		return li;
 	}
 

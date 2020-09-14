@@ -101,8 +101,8 @@ body {
               <ul class="article-information" >
                 <li class="floor">樓主<br><a href="#">發表於 2020-09-01 09:21 PM</a></li>
 
-                <li class="gp">讚12</li>
-                <li class="bp">噓18</li>
+                <li class="gp">讚</li>
+                <li class="bp">噓</li>
               </ul>
 				<div class="col-12 article-content">
                     ${TalkBean.postText}
@@ -111,8 +111,8 @@ body {
               <!-- 按讚功能 -->
 				 <div class="col-12 article-mood">
                     <ul class="like-or-hate">
-                      <li id="like1" button class="fas fa-thumbs-up fa-2x" type="button">12</li>
-                      <li id="hate1" button class="fas fa-thumbs-down fa-2x" type="button">1</li>
+                      <li id="like1" button class="fas fa-thumbs-up fa-2x" type="button"></li>
+                      <li id="hate1" button class="fas fa-thumbs-down fa-2x" type="button"></li>
                     </ul>
                   </div>
                 </div>

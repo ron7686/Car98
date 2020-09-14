@@ -130,7 +130,7 @@
                       </c:if>
                       <c:if test="${pageNo+2 < lastPage}">
                       <li class="page-item mt-2"><a href=""><i class="fas fa-caret-right"></i><i class="fas fa-caret-right"></i><i class="fas fa-caret-right"></i><i class="fas fa-caret-right"></i><i class="fas fa-caret-right"></i></a></li>
-                      <li class="page-item"><a class="page-link" href="#">${lastPage}</a></li>
+                      <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/forum/talktop.do?pageNo=${lastpage}">${lastPage}</a></li>
                    	  </c:if>
                     </ul>
                   </nav>
