@@ -1,0 +1,19 @@
+.mainarea{
+    border:2px solid white;
+    
+}
+.maintitle{
+    border-bottom:2px solid white;
+    text-align: center;
+}
+
+.subitem{
+    height: 35px;
+    
+}
+.select{
+    height: 35px;
+}
+.col-6{
+    font-size:20px;
+}
