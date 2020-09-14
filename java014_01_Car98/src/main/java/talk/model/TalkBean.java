@@ -32,6 +32,10 @@ public class TalkBean implements Serializable {
 	private Integer PostHate;
 	@Column(name="PostCom")
 	private Integer PostCom;
+	
+	@Column(name="PostType")
+	private Integer PostType;
+	
 	public TalkBean() {
 		super();
 	}

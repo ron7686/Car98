@@ -74,4 +74,24 @@ public class TalkDao  {
 		if(page>0)lastpage++;
 		return lastpage;
 	}
+	
+	public TalkBean selectOne(int postID) {
+
+		TalkBean tb = new TalkBean();
+		Transaction tx = null;
+		String hql = "FROM TalkBean t where t.PostID=:postID";
+		Session session = factory.getCurrentSession();
+		try {
+			tx = session.beginTransaction();
+			tb=(TalkBean)session.createQuery(hql).setParameter("postID", postID).getSingleResult();
+			tx.commit();
+		} catch (Exception ex) {
+			if (tx != null)
+				tx.rollback();
+			ex.printStackTrace();
+			throw new RuntimeException(ex);
+		}
+		return tb;
+		
+	}
 }

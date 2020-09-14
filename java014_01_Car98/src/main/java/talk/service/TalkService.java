@@ -34,6 +34,8 @@ public class TalkService  {
 	public int lastpage() {
 		return dao.lastpage();
 	}
-	
-	
+
+	public TalkBean selectOne(int postID) {
+		return dao.selectOne(postID);
+	}
 }

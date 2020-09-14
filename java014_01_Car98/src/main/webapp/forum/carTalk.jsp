@@ -110,7 +110,6 @@
                      <button class="btn text-white bg-primary  " onclick="window.location.href='talkContent.jsp'">發帖</i></a></button>
                 <nav aria-label="Page navigation" class="publishitem">
                     <ul class="pagination justify-content-end ">
-                        <button class="btn text-white bg-primary mr-auto ml-1" onclick="window.location.href='talkContent.jsp'">發帖<i class="fas fa-angle-down"></i></a></button>
                       <c:if test="${pageNo > 3}">
                       <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/forum/talktop.do?pageNo=1">1</a></li>
                       <li class="page-item mt-2"><a href=""><i class="fas fa-caret-left"></i><i class="fas fa-caret-left"></i><i class="fas fa-caret-left"></i><i class="fas fa-caret-left"></i><i class="fas fa-caret-left"></i></a></li>
@@ -178,8 +177,8 @@
                 <c:forEach var="aBean" items="${abean}">
 				  <tr>
                         <td class="sort "><a href=""><i class="fab fa-discourse"></i>討論</a></td>
-                        <td class="pic"><img src="https://picsum.photos/id/231/100/50?id=${aBean.postID}" alt=""></td>
-                        <th class="title itemtitle"><a class="subtitle" href="${pageContext.request.contextPath}/forum/talk.do">${aBean.postTitle}</a></th>
+                        <td class="pic"><img src="https://picsum.photos/id/231/100/50" alt=""></td>
+                        <th class="title itemtitle"><a class="subtitle" href="${pageContext.request.contextPath}/TalkTalkServlet?postID=${aBean.postID}">${aBean.postTitle}</a></th>
                         <td class="author"><a class="talkname" href="#">RonLee</a><br>2020/09/20 </td>
                         <td class="respon"><a class="subrespon" href="">131</a><br>15443</td>
                         <td class="lastupdate"><a class="talkname" href="">WayneChen</a><br><a  class="time" href="">昨天10:43pm</a></td>

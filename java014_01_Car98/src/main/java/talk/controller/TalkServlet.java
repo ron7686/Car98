@@ -42,7 +42,7 @@ public class TalkServlet extends HttpServlet {
 //				ITalkService service=ctx.getBean(ITalkService.class);
 //				
 				service.persist(tb);
-				request.setAttribute("TalkBean", tb);
+				request.setAttribute("tBean", tb);
 				RequestDispatcher rd=request.getRequestDispatcher("/forum/talktalk.jsp");
 				rd.forward(request, response);
 				return;
