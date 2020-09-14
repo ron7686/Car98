@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.util.Collection;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,7 +21,7 @@ import rentcar.service.RentCarService;
 import rentcar.service.impl.CarTypeServiceImpl;
 import rentcar.service.impl.RentCarServiceImpl;
 
-@WebServlet("/rent/RentCarServlet")
+@WebServlet("/rentcar/RentCarData")
 public class RentCarServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -53,32 +54,10 @@ public class RentCarServlet extends HttpServlet {
 		
 		RentCarService rentCarservice = new RentCarServiceImpl();
 		
-//		查詢rentcar全部
-		List<RentCarBean> rentCarBean = rentCarservice.getAllRentCars();
-		
 		//這裡建立功能：將查詢的結果，可能轉成緯經度和GSON，然後再顯示在地圖上
-		
-//		session.setAttribute("rcBean", rentCarBean);
-//		RequestDispatcher rd = request.getRequestDispatcher("test_allrentcar.jsp");
-		
-		
-//		查詢rentcar單筆
-//		RentCarBean rentcarbean = rentCarservice.getRentCar();
-//		session.setAttribute("rcbean", rentcarbean);
-//		RequestDispatcher rd = request.getRequestDispatcher("test_rentcar.jsp");
-//		
-//		rd.forward(request, response);
-//		return;
-		
-//		查詢cartype全部
-//		CarTypeServiceImpl cts = new CarTypeServiceImpl();
-//		
-//		Collection<CarTypeBean> ctb = cts.getCarTypeData();
-//		session.setAttribute("CarTypeData", ctb);
-//		
-//		RequestDispatcher rd = request.getRequestDispatcher("carRent.jsp");
-//		rd.forward(request, response);
-//		return;
+		RequestDispatcher rd = request.getRequestDispatcher("carRent.jsp");
+		rd.forward(request, response);
+		return;
 	}
 	
 }

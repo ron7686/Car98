@@ -1,5 +1,39 @@
-$(document).ready(function () {
-  /* 選擇車型，價格及地區 */
+$(document).ready(function() {
+	getCarDataOptions();
+	format1();
+	format2();
+	format3();
+});
+	
+	function getCarDataOptions() {
+		$.ajax({
+			method : "GET",
+			url : "/java014_01_Car98/rentcar/RentCarData",
+			success : function(res) {
+				// 	console.log(res);
+				var last_brand = "";
+				// 先設一個變數last_brand
+				for (i = 0; i < res.length; i++) {
+					// 新增optgroup：carBrand
+					if (last_brand != res[i].carBrand){
+						$("#caritem").append(
+							"<optgroup label=" + res[i].carBrand + ">"
+							                   + "</optgroup>"
+							                   );
+					}	
+					// 新增option：carType，option的爸爸為新產生的<optgroup></optgroup>
+					$("optgroup[label=" + res[i].carBrand + "]").append(
+					    "<option value=" + res[i].typeId + ">"
+					     + res[i].carType
+					     + "</option>"
+					     );	
+					
+					last_brand = res[i].carBrand;	
+				}
+			}
+		})
+	}
+  /* 選擇地區，價格及車型 */
 
    function format1(item1) {
      opt1 = $("#areaitem").find(":selected");
@@ -39,6 +73,5 @@ $(document).ready(function () {
     templateSelection: format3,
     escapeMarkup: function (c) {
       return c;
-    }
-  });
+   }
 });
