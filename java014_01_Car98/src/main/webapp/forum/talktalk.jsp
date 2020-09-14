@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<% String path=request.getContextPath(); %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,8 +26,8 @@
 	href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
 	integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
 	crossorigin="anonymous" />
-<link rel="stylesheet" href="../css/talktalk.css">
-
+<link rel="stylesheet" href="<%=path%>/css/talktalk.css"/>
+<!-- /java014_01_Car98/src/main/webapp/css/talktalk.css -->
 <script src="http://maps.google.com/maps/api/js"></script>
 <script src=""></script>
 <style>
@@ -54,7 +55,7 @@
 }
 
 body {
-	background-image: url(../image/Desktop.png);
+	background-image: url(<%=path%>/image/Desktop.png);
 	background-position: center;
 	background-attachment: fixed;
 	background-repeat: no-repeat;
@@ -90,7 +91,7 @@ body {
 			<!-- 作者資訊 -->
 			<div class="col-2">
              <br>
-             <a href="#"><img class="photo" src="../image/喬巴1.jpg"></a>
+             <a href="#"><img class="photo" src="<%=path%>/image/喬巴1.jpg"></a>
              <div class="author">多尼多尼喬巴</div>
              <div class="account">zzz94572</div>
              
@@ -105,7 +106,7 @@ body {
               </ul>
 				<div class="col-12 article-content">
                     ${TalkBean.postText}
-                    <img class="picture" src="https://picsum.photos/id/222/500/600" alt=""><br>
+<!--                     <img class="picture" src="https://picsum.photos/id/222/500/600" alt=""><br> -->
                   </div>
               <!-- 按讚功能 -->
 				 <div class="col-12 article-mood">
@@ -118,7 +119,7 @@ body {
             <!-- 作者資訊 -->    
 			<div class="col-2">
                   <br>
-                  <a href="#"><img class="photo" src="../image/熱巴.jpg"></a>
+                  <a href="#"><img class="photo" src="<%=path%>/image/熱巴.jpg"></a>
                   <div class="author">迪麗熱巴</div>
                   <div class="account">reba0603</div>
                 </div>
