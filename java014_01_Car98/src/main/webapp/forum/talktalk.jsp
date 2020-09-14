@@ -161,8 +161,8 @@ body {
               <!-- 按讚功能 -->
 				 <div class="col-12 article-mood">
                     <ul class="like-or-hate">
-                      <li button class="fas fa-thumbs-up fa-2x" type="button">12</li>
-                      <li button class="fas fa-thumbs-down fa-2x" type="button">1</li>
+                      <li id="like1" button class="fas fa-thumbs-up fa-2x" type="button">12</li>
+                      <li id="hate1" button class="fas fa-thumbs-down fa-2x" type="button">1</li>
                     </ul>
                   </div>
                 </div>
@@ -190,8 +190,8 @@ body {
 				<!-- 按讚功能 -->    
                    <div class="col-12 article-mood">
                       <ul class="like-or-hate">
-                        <li button class="fas fa-thumbs-up fa-2x" type="button">3</li>
-                        <li button class="fas fa-thumbs-down fa-2x" type="button">1</li>
+                        <li id="like2" button class="fas fa-thumbs-up fa-2x" type="button">3</li>
+                        <li id="hate2" button class="fas fa-thumbs-down fa-2x" type="button">1</li>
                         
                       </ul>
                    </div>
@@ -290,8 +290,8 @@ body {
 				<!-- 按讚功能 -->     
                    <div class="col-12 article-mood">
                       <ul class="like-or-hate">
-                        <li button class="fas fa-thumbs-up fa-2x" type="button">1</li>
-                        <li button class="fas fa-thumbs-down fa-2x" type="button">6</li>
+                        <li id="like3" button class="fas fa-thumbs-up fa-2x" type="button">1</li>
+                        <li id="hate3" button class="fas fa-thumbs-down fa-2x" type="button">6</li>
                        
                       </ul>
                    </div>
@@ -306,8 +306,8 @@ body {
        <div class="container">
          <div class="row">
            <div class="col-12 mt-2">
-             <form class="comment">
-               <textarea class="" cols="68" rows="5" placeholder="請輸入內容...."></textarea>
+             <form class="comment" action="/forum/talk/comment.do" method="post">
+               <textarea id="comments" class="" cols="68" rows="5" placeholder="請輸入內容...."></textarea>
                <input type="file" class="form-control-file" id="exampleFormControlFile1">
                 <input class="float-right" type="submit" value="送出">
               </form>
