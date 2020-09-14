@@ -28,5 +28,6 @@
 
 		<!-- 3. 宣告程式使用的永續類別 -->
 		<mapping class="talk.model.TalkBean" />
+		<mapping class="talk.model.CommentBean"/>
 	</session-factory>
 </hibernate-configuration>

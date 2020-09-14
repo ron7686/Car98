@@ -31,7 +31,7 @@ public class CommentServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		Integer ComID = null;
 		String Comtext = request.getParameter("comments");
-		Integer postId = 123;
+		Integer postId = 1;
 		Integer memId = 36;
 		Integer comLike = 6;
 		if (Comtext == null || Comtext.trim().length() == 0) {
@@ -43,7 +43,7 @@ public class CommentServlet extends HttpServlet {
 				CommentService service=new CommentService();
 
 
-				service.persist(cb);
+//				service.persist(cb);
 				service.insertCom(cb);
 				request.setAttribute("CommentBean", cb);
 				RequestDispatcher rd = request.getRequestDispatcher("/forum/talktalk.jsp");

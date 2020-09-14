@@ -186,8 +186,8 @@ body {
        <div class="container">
          <div class="row">
            <div class="col-12 mt-2">
-             <form class="comment" action="/forum/talk/comment.do" method="post">
-               <textarea id="comments" class="" cols="68" rows="5" placeholder="請輸入內容...."></textarea>
+             <form class="comment" action="${pageContext.request.contextPath}/forum/comment.do" method="post">
+               <textarea id="comments" name="comments" class="" cols="68" rows="5" placeholder="請輸入內容...."></textarea>
                <input type="file" class="form-control-file" id="exampleFormControlFile1">
                 <input class="float-right" type="submit" value="送出">
               </form>
