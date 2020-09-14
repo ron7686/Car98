@@ -31,7 +31,7 @@ public class TalkTalkServlet extends HttpServlet {
 		session.setAttribute("postID", postID);
 		TalkService ts=new TalkService();
 		TalkBean tb=ts.selectOne(postID);
-		session.setAttribute("tbean", tb);
+		session.setAttribute("TalkBean", tb);
 		
 		RequestDispatcher rd=request.getRequestDispatcher("/forum/talktalk.jsp");
 		rd.forward(request, response);

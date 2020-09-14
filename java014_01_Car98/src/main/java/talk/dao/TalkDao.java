@@ -14,7 +14,7 @@ import talk.util.HibernateUtils;
 
 @Repository
 public class TalkDao  {
-	int onepage=3;
+	int onepage=10;
 	SessionFactory factory;
 	public TalkDao() {
 		factory = HibernateUtils.getSessionFactory();
