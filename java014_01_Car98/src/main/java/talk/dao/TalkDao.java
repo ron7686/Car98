@@ -14,6 +14,7 @@ import talk.util.HibernateUtils;
 
 @Repository
 public class TalkDao  {
+	int onepage=10;
 	SessionFactory factory;
 	public TalkDao() {
 		factory = HibernateUtils.getSessionFactory();
@@ -55,10 +56,10 @@ public class TalkDao  {
 	}
 
 	public List<TalkBean> getPage(int page){
-		int getpage=(page-1)*10;
+		int getpage=(page-1)*onepage;
 		List<TalkBean> li = getAll();
 		List<TalkBean> lipage=new ArrayList<>();
-		for(int i=getpage;i<getpage+10&&i<li.size();i++) {
+		for(int i=getpage;i<getpage+onepage&&i<li.size();i++) {
 			lipage.add(li.get(i));
 		}
 		return lipage;
@@ -68,8 +69,8 @@ public class TalkDao  {
 		int lastpage;
 		int page;
 		List<TalkBean> li = getAll();
-		lastpage=li.size()/10;
-		page=li.size()%10;
+		lastpage=li.size()/onepage;
+		page=li.size()%onepage;
 		if(page>0)lastpage++;
 		return lastpage;
 	}
