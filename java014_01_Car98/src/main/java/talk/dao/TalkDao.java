@@ -13,7 +13,7 @@ import talk.model.TalkBean;
 import talk.util.HibernateUtils;
 
 @Repository
-public class TalkDao {
+public class TalkDao  {
 	SessionFactory factory;
 	public TalkDao() {
 		factory = HibernateUtils.getSessionFactory();

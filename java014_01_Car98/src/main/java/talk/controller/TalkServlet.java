@@ -1,9 +1,7 @@
 package talk.controller;
 
 import java.io.IOException;
-import java.lang.ProcessBuilder.Redirect;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
@@ -13,7 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import talk.dao.TalkDao;
 import talk.model.TalkBean;
 import talk.service.TalkService;
 
@@ -40,6 +37,10 @@ public class TalkServlet extends HttpServlet {
 			TalkBean tb=new TalkBean(PostID, PostTitle, PostText);
 			try {
 				TalkService service=new TalkService();
+//				ServletContext sc=getServletContext();
+//				WebApplicationContext ctx= WebApplicationContextUtils.getWebApplicationContext(sc);
+//				ITalkService service=ctx.getBean(ITalkService.class);
+//				
 				service.persist(tb);
 				request.setAttribute("TalkBean", tb);
 				RequestDispatcher rd=request.getRequestDispatcher("/forum/talktalk.jsp");

@@ -30,3 +30,6 @@
   tr,td{
     border: 1px solid #ccc;
   }
+  #totalresult{
+    margin-left:85%;
+  }

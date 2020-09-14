@@ -14,7 +14,7 @@ public class HibernateUtils {
 		try {
 			// Hibernate 5.x 的寫法
 			StandardServiceRegistry standardRegistry = new StandardServiceRegistryBuilder()
-					.configure("hibernate.cfg.xml").build();
+					.configure("/rentcar/hibernate.cfg.xml").build();
 
 			Metadata metadata = new MetadataSources(standardRegistry).getMetadataBuilder().build();
 			SessionFactory sessionFactory = metadata.getSessionFactoryBuilder().build();

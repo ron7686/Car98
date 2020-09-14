@@ -11,7 +11,7 @@ import talk.model.TalkBean;
 import talk.util.HibernateUtils;
 
 
-public class TalkService {
+public class TalkService  {
 
 	TalkDao dao;
 	SessionFactory factory;

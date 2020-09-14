@@ -79,37 +79,37 @@
             </div>
             <div class="col-2 border">
                 <a href="">
-                <img src="https://picsum.photos/id/231/180/90" alt=""></a>
+                <img src="https://picsum.photos/id/231/180/90" class="img-fluid"  alt="Responsive image" style="width:100%; height:auto;"></a>
             </div>
             <div class="col-2 border ">
                 <a href="">
-                <img  src="https://picsum.photos/id/238/180/90" alt=""></a>
+                <img  src="https://picsum.photos/id/238/180/90" class="img-fluid"  alt="Responsive image" style="width:100%; height:auto;"></a>
                 
             </div>
             <div class="col-2 border">
                 <a href="">
-                <img src="https://picsum.photos/id/236/180/90" alt=""></a>
+                <img src="https://picsum.photos/id/236/180/90" class="img-fluid"  alt="Responsive image" style="width:100%; height:auto;"></a>
 
             </div>
             <div class="col-2 border">
                 <a href="">
-                <img src="https://picsum.photos/id/235/180/90" alt=""></a>
+                <img src="https://picsum.photos/id/235/180/90" class="img-fluid"  alt="Responsive image" style="width:100%; height:auto;"></a>
 
             </div>
             <div class="col-2 border">
                 <a href="">
-                <img src="https://picsum.photos/id/234/180/90" alt=""></a>
+                <img src="https://picsum.photos/id/234/180/90" class="img-fluid"  alt="Responsive image" style="width:100%; height:auto;"></a>
 
             </div>
             <div class="col-2 border">
                 <a href="">
-                <img src="https://picsum.photos/id/233/180/90" alt=""></a>
+                <img src="https://picsum.photos/id/233/180/90" class="img-fluid"  alt="Responsive image" style="width:100%; height:auto;"></a>
 
             </div>
-            <div class="col-12 publish">
-                <nav aria-label="Page navigation example " class="publishitem">
+            <div class="col-12 publish ">
+                     <button class="btn text-white bg-primary  " onclick="window.location.href='talkContent.jsp'">發帖</i></a></button>
+                <nav aria-label="Page navigation" class="publishitem">
                     <ul class="pagination justify-content-end ">
-
                         <button class="btn text-white bg-primary mr-auto ml-1" onclick="window.location.href='talkContent.jsp'">發帖<i class="fas fa-angle-down"></i></a></button>
                       <c:if test="${pageNo > 3}">
                       <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/forum/talktop.do?pageNo=1">1</a></li>
