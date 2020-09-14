@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,11 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.context.support.WebApplicationContextUtils;
-
 import talk.model.TalkBean;
-import talk.service.ITalkService;
+import talk.service.TalkService;
 
 @WebServlet("/forum/talktop.do")
 public class TalktopServlet extends HttpServlet {
@@ -35,12 +31,12 @@ public class TalktopServlet extends HttpServlet {
 			pageNo = 1;
 		}
 		session.setAttribute("pageNo", pageNo);
-//		ITalkService ts=new TalkService();
-		ServletContext sc=getServletContext();
-		WebApplicationContext ctx=WebApplicationContextUtils.getWebApplicationContext(sc);
-		ITalkService ts=ctx.getBean(ITalkService.class);
-		
-		
+		TalkService ts=new TalkService();
+//		ServletContext sc=getServletContext();
+//		WebApplicationContext ctx=WebApplicationContextUtils.getWebApplicationContext(sc);
+//		ITalkService ts=ctx.getBean(ITalkService.class);
+//		
+//		
 		
 		List<TalkBean> li=ts.select(pageNo);
 		session.setAttribute("abean", li);

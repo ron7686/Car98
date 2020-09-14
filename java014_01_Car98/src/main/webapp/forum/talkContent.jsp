@@ -88,23 +88,25 @@ body {
 				<!-- 編輯列表 -->
 				<div class="col-12  editor-list">
 
-					<select class="font-area mt-2" name="" id="" data-toggle="tooltip"
-						data-placement="bottom" title="字級">
-						<option value="">大</option>
-						<option value="">中</option>
-						<option value="">小</option>
+					<select class="font-area mt-2" name="" id="fontsize"
+						data-toggle="tooltip" data-placement="bottom" title="字級"
+						style="width: 63px">
+						<option value="">字體</option>
+						<option id="big" value="big">大</option>
+						<option id="mid" value="mid">中</option>
+						<option id="small" value="small">小</option>
 					</select>
 
-					<button type="button " class="btn-light " data-toggle="tooltip"
-						data-placement="bottom" title="粗體">
+					<button type="button " id="Boldbtn" class="btn-light "
+						data-toggle="tooltip" data-placement="bottom" title="粗體">
 						<i class="fas fa-bold"></i>
 					</button>
-					<button type="button" class="btn-light " data-toggle="tooltip"
-						data-placement="bottom" title="斜體">
+					<button type="button" id="Ibtn" class="btn-light "
+						data-toggle="tooltip" data-placement="bottom" title="斜體">
 						<i class="fas fa-italic"></i>
 					</button>
-					<button type="button" class="btn-light " data-toggle="tooltip"
-						data-placement="bottom" title="底線">
+					<button type="button" id="Ubtn" class="btn-light "
+						data-toggle="tooltip" data-placement="bottom" title="底線">
 						<b><u>U</u></b>
 					</button>
 					<button type="button" class=" btn-light font "

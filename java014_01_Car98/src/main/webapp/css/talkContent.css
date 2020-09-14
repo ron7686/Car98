@@ -67,4 +67,22 @@
 .errormsg{
 	color:red;
 }
+textarea {
+  font-size: 16px;
+}
+
+.big {
+  font-size: 35px;
+}
+
+.mid {
+  font-size: 25px;
+}
+
+.small {
+  font-size: 20px;
+}
+.bold{
+  font-weight:bold;
+}
 

@@ -6,19 +6,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.context.support.WebApplicationContextUtils;
-
 import talk.model.CommentBean;
-import talk.service.ICommentService;
-import talk.service.Impl.CommentService;
+import talk.service.CommentService;
 
 @WebServlet("/forum/comment.do")
 public class CommentServlet extends HttpServlet {
@@ -45,11 +40,8 @@ public class CommentServlet extends HttpServlet {
 		if (errorMessage.isEmpty()) {
 			CommentBean cb = new CommentBean(postId, memId, Comtext, new Date(), comLike);
 			try {
-//				ICommentService service=new CommentService();
+				CommentService service=new CommentService();
 
-				ServletContext sc = getServletContext();
-				WebApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(sc);
-				ICommentService service = ctx.getBean(ICommentService.class);
 
 				service.persist(cb);
 				service.insertCom(cb);
