@@ -32,7 +32,9 @@ public class TalktopServlet extends HttpServlet {
 		}
 		session.setAttribute("pageNo", pageNo);
 		TalkService ts=new TalkService();
+		int lastPage=ts.lastpage();
 		List<TalkBean> li=ts.select(pageNo);
+		session.setAttribute("lastPage", lastPage);
 		session.setAttribute("abean", li);
 		
 		

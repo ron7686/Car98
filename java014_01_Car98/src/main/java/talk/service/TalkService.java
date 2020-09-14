@@ -27,23 +27,12 @@ public class TalkService {
 	
 	public List<TalkBean> select(int page){
 		List<TalkBean> bean = null;
-		Session session = factory.getCurrentSession();
-		Transaction tx = null;
-		try {
-			tx = session.beginTransaction();
-			bean = dao.getAll(page);
-			tx.commit();
-		} catch (Exception ex) {
-			if (tx != null)
-				tx.rollback();
-			ex.printStackTrace();
-			throw new RuntimeException(ex);
-		}
+		bean = dao.getPage(page);
 		return bean;
 	}
 	
-	public List<TalkBean> getAllTalk(int page){
-		return select(page);
+	public int lastpage() {
+		return dao.lastpage();
 	}
 	
 	
