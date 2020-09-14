@@ -13,7 +13,7 @@
     integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
     crossorigin="anonymous"
   />
-  <link rel="stylesheet" href="/java014_01_Car98/src/main/webapp/css/shopCheckout.css">
+  <link rel="stylesheet" href="../css/shopCheckout.css">
 </head>
 <body>
      <!-- navbar -->
@@ -36,6 +36,7 @@
                             data-parent="#accordionExample">
                             <div class="card-body pt-0" id="product-table">
                               <p class="text-white" id="result"></p>
+                              <p class="text-white" id="totalresult"></p>
             <!-- 動態新增區域<table class="table"> -->
                                      <!-- <thead>
                                         <tr class="text-center">
@@ -161,6 +162,6 @@
     <script
       src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
     ></script>
-  <script src="/java014_01_Car98/src/main/webapp/javascript/addProduct.js"></script>
+  <script src="../javascript/addProduct.js"></script>
 </body>
 </html>
