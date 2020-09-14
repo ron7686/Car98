@@ -18,14 +18,10 @@
 		id="navbarNavDropdown">
 		<ul class="navbar-nav ml-auto">
 			<li class="nav-item dropdown"><a
-				class="nav-link" href="#"
+				class="nav-link" href="${pageContext.request.contextPath}/searchresource/SearchResource.jsp"
 				id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
 				aria-haspopup="true" aria-expanded="false"> Car好康 </a>
-				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-					<a class="dropdown-item" href="#">搜尋加油站</a> <a
-						class="dropdown-item" href="#">搜尋自助洗車</a> <a class="dropdown-item"
-						href="#">搜尋停車位</a>
-				</div>
+				</li>
 			<li class="nav-item dropdown"><a
 				class="nav-link" href="/carEasy.html"
 				id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
