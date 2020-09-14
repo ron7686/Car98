@@ -13,7 +13,8 @@ import talk.model.TalkBean;
 import talk.util.HibernateUtils;
 
 @Repository
-public class TalkDao {
+public class TalkDao  {
+	int onepage=10;
 	SessionFactory factory;
 	public TalkDao() {
 		factory = HibernateUtils.getSessionFactory();
@@ -33,21 +34,64 @@ public class TalkDao {
 			e.printStackTrace();
 		}
 	}
+	
 	@SuppressWarnings("unchecked")
-	public List<TalkBean> getAll(int page){
-		int getpage=(page-1)*10;
+	public List<TalkBean> getAll(){
+		
 		List<TalkBean> li = new ArrayList<>();
+		Transaction tx = null;
 		String hql = "FROM TalkBean";
 		Session session = factory.getCurrentSession();
-		li=session.createQuery(hql).list();
-		List<TalkBean> li10=new ArrayList<>();
-		for(int i=getpage;i<getpage+10&&i<li.size();i++) {
-			li10.add(li.get(i));
+		try {
+			tx = session.beginTransaction();
+			li=session.createQuery(hql).list();
+			tx.commit();
+		} catch (Exception ex) {
+			if (tx != null)
+				tx.rollback();
+			ex.printStackTrace();
+			throw new RuntimeException(ex);
 		}
-		//li = session.createQuery(hql).list();
-		return li10;
+		return li;
+	}
+
+	public List<TalkBean> getPage(int page){
+		int getpage=(page-1)*onepage;
+		List<TalkBean> li = getAll();
+		List<TalkBean> lipage=new ArrayList<>();
+		for(int i=getpage;i<getpage+onepage&&i<li.size();i++) {
+			lipage.add(li.get(i));
+		}
+		return lipage;
+	}
+
+	public int lastpage() {
+		int lastpage;
+		int page;
+		List<TalkBean> li = getAll();
+		lastpage=li.size()/onepage;
+		page=li.size()%onepage;
+		if(page>0)lastpage++;
+		return lastpage;
 	}
 	
-	
-	
+	public TalkBean selectOne(int postID) {
+
+		TalkBean tb = new TalkBean();
+		Transaction tx = null;
+		String hql = "FROM TalkBean t where t.PostID=:postID";
+		Session session = factory.getCurrentSession();
+		try {
+			tx = session.beginTransaction();
+			tb=(TalkBean)session.createQuery(hql).setParameter("postID", postID).getSingleResult();
+			tx.commit();
+		} catch (Exception ex) {
+			if (tx != null)
+				tx.rollback();
+			ex.printStackTrace();
+			throw new RuntimeException(ex);
+		}
+		return tb;
+		
+	}
 }

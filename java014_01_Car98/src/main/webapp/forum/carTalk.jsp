@@ -79,46 +79,59 @@
             </div>
             <div class="col-2 border">
                 <a href="">
-                <img src="https://picsum.photos/id/231/180/90" alt=""></a>
+                <img src="https://picsum.photos/id/231/180/90" class="img-fluid"  alt="Responsive image" style="width:100%; height:auto;"></a>
             </div>
             <div class="col-2 border ">
                 <a href="">
-                <img  src="https://picsum.photos/id/238/180/90" alt=""></a>
+                <img  src="https://picsum.photos/id/238/180/90" class="img-fluid"  alt="Responsive image" style="width:100%; height:auto;"></a>
                 
             </div>
             <div class="col-2 border">
                 <a href="">
-                <img src="https://picsum.photos/id/236/180/90" alt=""></a>
+                <img src="https://picsum.photos/id/236/180/90" class="img-fluid"  alt="Responsive image" style="width:100%; height:auto;"></a>
 
             </div>
             <div class="col-2 border">
                 <a href="">
-                <img src="https://picsum.photos/id/235/180/90" alt=""></a>
+                <img src="https://picsum.photos/id/235/180/90" class="img-fluid"  alt="Responsive image" style="width:100%; height:auto;"></a>
 
             </div>
             <div class="col-2 border">
                 <a href="">
-                <img src="https://picsum.photos/id/234/180/90" alt=""></a>
+                <img src="https://picsum.photos/id/234/180/90" class="img-fluid"  alt="Responsive image" style="width:100%; height:auto;"></a>
 
             </div>
             <div class="col-2 border">
                 <a href="">
-                <img src="https://picsum.photos/id/233/180/90" alt=""></a>
+                <img src="https://picsum.photos/id/233/180/90" class="img-fluid"  alt="Responsive image" style="width:100%; height:auto;"></a>
 
             </div>
-            <div class="col-12 publish">
-                <nav aria-label="Page navigation example " class="publishitem">
+            <div class="col-12 publish ">
+                     <button class="btn text-white bg-primary  " onclick="window.location.href='talkContent.jsp'">發帖</a></button>
+                <nav aria-label="Page navigation" class="publishitem">
                     <ul class="pagination justify-content-end ">
-                        <button class="btn text-white bg-primary mr-auto ml-1"><a class="text-white" href="content_1.jsp" ">發帖<i class="fas fa-angle-down"></i></a></button>
-                      <li class="page-item"><a class="page-link" href="#">1</a></li>
+
+                      <c:if test="${pageNo > 3}">
+                      <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/forum/talktop.do?pageNo=1">1</a></li>
                       <li class="page-item mt-2"><a href=""><i class="fas fa-caret-left"></i><i class="fas fa-caret-left"></i><i class="fas fa-caret-left"></i><i class="fas fa-caret-left"></i><i class="fas fa-caret-left"></i></a></li>
-                      <li class="page-item"><a class="page-link" href="#">2</a></li>
-                      <li class="page-item " aria-current="page"><a class="page-link" href="#">3</a></li>
-                      <li class="page-item active"><a class="page-link" href="#">4</a></li>
-                      <li class="page-item"><a class="page-link" href="#">5</a></li>
-                      <li class="page-item"><a class="page-link" href="#">6</a></li>
+                      	</c:if>
+                      	<c:if test="${pageNo > 2}">
+                      <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/forum/talktop.do?pageNo=${pageNo-2}">${pageNo-2}</a></li>
+                      	</c:if>
+                      	<c:if test="${pageNo > 1}">
+                      <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/forum/talktop.do?pageNo=${pageNo-1}">${pageNo-1}</a></li>
+                     	</c:if>
+                      <li class="page-item active"><a class="page-link" href="#">${pageNo}</a></li>
+                      <c:if test="${pageNo < lastPage}">
+                      <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/forum/talktop.do?pageNo=${pageNo+1}">${pageNo+1}</a></li>
+                      </c:if>
+                      <c:if test="${pageNo+1 < lastPage}">
+                      <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/forum/talktop.do?pageNo=${pageNo+2}">${pageNo+2}</a></li>
+                      </c:if>
+                      <c:if test="${pageNo+2 < lastPage}">
                       <li class="page-item mt-2"><a href=""><i class="fas fa-caret-right"></i><i class="fas fa-caret-right"></i><i class="fas fa-caret-right"></i><i class="fas fa-caret-right"></i><i class="fas fa-caret-right"></i></a></li>
-                      <li class="page-item"><a class="page-link" href="#">7</a></li>
+                      <li class="page-item"><a class="page-link" href="#">${lastPage}</a></li>
+                   	  </c:if>
                     </ul>
                   </nav>
             </div>
@@ -159,14 +172,14 @@
                 </table>
                 
             </div>
-    
+    		
             <div class="col-12 content">
                 <table class="maintalk mt-1 talk">
                 <c:forEach var="aBean" items="${abean}">
 				  <tr>
                         <td class="sort "><a href=""><i class="fab fa-discourse"></i>討論</a></td>
-                        <td class="pic"><img src="https://picsum.photos/id/231/100/50?id=${aBean.postID}" alt=""></td>
-                        <th class="title itemtitle"><a class="subtitle" href="${pageContext.request.contextPath}/forum/talk.do">${aBean.postTitle}</a></th>
+                        <td class="pic"><img src="https://picsum.photos/id/231/100/50" alt=""></td>
+                        <th class="title itemtitle"><a class="subtitle" href="${pageContext.request.contextPath}/TalkTalkServlet?postID=${aBean.postID}">${aBean.postTitle}</a></th>
                         <td class="author"><a class="talkname" href="#">RonLee</a><br>2020/09/20 </td>
                         <td class="respon"><a class="subrespon" href="">131</a><br>15443</td>
                         <td class="lastupdate"><a class="talkname" href="">WayneChen</a><br><a  class="time" href="">昨天10:43pm</a></td>
