@@ -143,7 +143,7 @@ body {
 					<div class="form-group">
 						<label for="password">密碼</label> <input type="password"
 							class="form-control" id="password" placeholder="password"
-							name="pswd" value="${requestScope.password}${param.password}"
+							name="pswd" value="${requestScope.password}${param.pswd}"
 							required>
 						<div class="invalid-feedback">請輸入密碼</div>
 						<Font color='red' size="-1">${ErrorMsgKey.PassowrdEmptyError}</Font>

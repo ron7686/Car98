@@ -55,15 +55,11 @@ public class UpdateUserServlet extends HttpServlet {
 		session.setAttribute("MsgOK", msgOK); // 顯示正常訊息
 
 		String memberId = "";
-		String password = "";
-		String password1 = "";
 		String name = "";
-		String email = "";
 		String phone = "";
 		String fileName = "";
 		String sex = "";
-		String birth ="";
-		Date date = null;
+
 		long sizeInBytes = 0;
 		InputStream is = null;
 		// 取出HTTP multipart request內所有的parts
@@ -146,10 +142,7 @@ public class UpdateUserServlet extends HttpServlet {
 			MemberService service = ctx.getBean(MemberService.class);
 			
 			
-				// 為了配合Hibernate的版本。
-				// 要在此加密，不要在 dao.saveMember(mem)進行加密
-				password1 = GlobalService.getMD5Endocing(
-						GlobalService.encryptString(password1));
+
 				Blob blob = null;
 				if (is != null) {
 					blob = GlobalService.fileToBlob(is, sizeInBytes);

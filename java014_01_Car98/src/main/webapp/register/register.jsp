@@ -16,7 +16,7 @@
 	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
 	crossorigin="anonymous">
 <link rel="stylesheet" href="../css/all.css">
-<script src="../javascript/image.js"></script>
+<script src="../javascript/showRegisterImage.js"></script>
 <style>
 input[type="submit"]:disabled {
 	background-color: red;

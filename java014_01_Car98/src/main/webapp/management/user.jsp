@@ -17,7 +17,6 @@
 	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
 	crossorigin="anonymous">
 <link rel="stylesheet" href="../css/all.css">
-<script src="../javascript/image.js"></script>
 <style>
 input[type="submit"]:disabled {
 	background-color: red;
@@ -45,6 +44,76 @@ input[type="submit"]:disabled {
 .bg-cover {
 	background-size: cover;
 }
+
+#snackbar {
+	visibility: hidden;
+	min-width: 250px;
+	margin-left: -125px;
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+	border-radius: 2px;
+	padding: 16px;
+	position: fixed;
+	z-index: 1;
+	left: 50%;
+	bottom: 30px;
+	font-size: 17px;
+}
+
+#snackbar.show {
+	visibility: visible;
+	-webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+	animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@
+-webkit-keyframes fadein {
+	from {bottom: 0;
+	opacity: 0;
+}
+
+to {
+	bottom: 30px;
+	opacity: 1;
+}
+
+}
+@
+keyframes fadein {
+	from {bottom: 0;
+	opacity: 0;
+}
+
+to {
+	bottom: 30px;
+	opacity: 1;
+}
+
+}
+@
+-webkit-keyframes fadeout {
+	from {bottom: 30px;
+	opacity: 1;
+}
+
+to {
+	bottom: 0;
+	opacity: 0;
+}
+
+}
+@
+keyframes fadeout {
+	from {bottom: 30px;
+	opacity: 1;
+}
+
+to {
+	bottom: 0;
+	opacity: 0;
+}
+}
 </style>
 
 <title>會員資料</title>
@@ -58,8 +127,7 @@ input[type="submit"]:disabled {
 		<div class="col-md-3 mt-5 p-1">
 			<div class="form-group">
 
-				<label for="exampleFormControlFile1s">
-				<input type="file"
+				<label for="exampleFormControlFile1s"> <input type="file"
 					name="image" id="image_file" style="display: none;" /> <img
 					style="width: 350px; height: 350px; border-radius: 50%;"
 					src='${pageContext.request.contextPath}/_00_init/getMemberImage?id=${LoginOK.memId}'
@@ -101,9 +169,10 @@ input[type="submit"]:disabled {
 				type="email" class="form-control" id="exampleInputEmail1"
 				value="${memberBean.email}" name="email"
 				aria-describedby="emailHelp" placeholder="Enter email"
-				pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" disabled="disabled" required>
-			<small id="emailHelp" class="form-text text-muted">We'll
-				never share your email with anyone else.</small>
+				pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$"
+				disabled="disabled" required> <small id="emailHelp"
+				class="form-text text-muted">We'll never share your email
+				with anyone else.</small>
 			<div class="invalid-feedback">請輸入正確的email</div>
 			<font color="red" size="-1">${MsgMap.errorIdDup}</font>
 		</div>
@@ -117,47 +186,82 @@ input[type="submit"]:disabled {
 				<div class="invalid-feedback">請選擇日期</div>
 				<font color="red" size="-1">${ErrorMsg.errorBirth}</font>
 			</div>
-						<div class="col-md-3 mt-3">
-							<label for="validationCustom04">性別: </label>
-							<div class="form-check form-check-inline">
-								<input class="form-check-input" type="radio" name="gridRadios"
-									id="gridRadios1" value="M"  ${memberBean.sex =="M" ? "checked='checked'" : ""}> <label
-									class="form-check-label text-primary" for="gridRadios1"> 男
-								</label>
-							</div>
-							<div class="form-check form-check-inline">
-								<input class="form-check-input" type="radio" name="gridRadios"
-									id="gridRadios2" value="F" ${memberBean.sex =="F" ? "checked='checked'" : ""}> <label
-									class="form-check-label text-danger" for="gridRadios2"> 女
-								</label>
-							</div>
-								<font color="red" size="-1">${MsgMap.errorSex}</font>
+			<div class="col-md-3 mt-3">
+				<label for="validationCustom04">性別: </label>
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="gridRadios"
+						id="gridRadios1" value="M"
+						${memberBean.sex =="M" ? "checked='checked'" : ""}> <label
+						class="form-check-label text-primary" for="gridRadios1"> 男
+					</label>
+				</div>
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="gridRadios"
+						id="gridRadios2" value="F"
+						${memberBean.sex =="F" ? "checked='checked'" : ""}> <label
+						class="form-check-label text-danger" for="gridRadios2"> 女
+					</label>
+				</div>
+				<font color="red" size="-1">${MsgMap.errorSex}</font>
 
-						</div>
+			</div>
 		</div>
-
-<!-- 		<div class="form-group w-50"> -->
-<!-- 			密碼 <input type="text" id="pwdId" class="form-control" -->
-<%-- 				value="${memberBean.password}" name="password" --%>
-<!-- 				pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}" -->
-<!-- 				required> -->
-<!-- 			<div class="valid-feedback">符合規則</div> -->
-<!-- 			<div class="invalid-feedback">需包含大小字母、數字、特殊符號、8個字符</div> -->
-<%-- 			<font color="red" size="-1">${ErrorMsg.passwordError}</font> --%>
-<!-- 		</div> -->
-<!-- 		<div class="form-group w-50"> -->
-<!-- 			確認密碼 <input type="text" id="cPwdId" -->
-<%-- 				class="form-control myCpwdClass" value="${memberBean.password}" --%>
-<!-- 				name="password1" -->
-<!-- 				pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}" -->
-<!-- 				required> -->
-<!-- 			<div id="cPwdValid" class="valid-feedback">密碼相符</div> -->
-<!-- 			<div id="cPwdInvalid" class="invalid-feedback">密碼不相同</div> -->
-<%-- 			<font color="red" size="-1">${MsgMap.passwordError}${MsgMap.errorPassword1Empty}</font> --%>
-<!-- 		</div> -->
-
-		<button class="btn btn-secondary" id="button" type="submit">確認送出</button>
+		<div class="mb-3">
+			<button class="btn btn-secondary" id="button" type="submit">確認送出</button>
+		</div>
 	</form>
+
+	<!-- Button trigger modal -->
+	<div class="mt-2 mb-2 needs-validation mx-5 text-white">
+		<button type="button" class="btn btn-secondary" data-toggle="modal"
+			data-target="#staticBackdrop">修改密碼</button>
+	</div>
+	<!-- Modal -->
+	<div class="modal fade" id="staticBackdrop" data-backdrop="static"
+		data-keyboard="false" tabindex="-1"
+		aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="staticBackdropLabel">修改密碼</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<form action="<c:url value='/_01_reguster/change.do'/>"
+					method="POST">
+					<div class="modal-body">
+						<div class="form-group w-50 mx-auto">
+							<p class="text-secondary">新密碼</p>
+							<input type="password" id="pwdId" class="form-control"
+								name="password" required>
+							<div class="valid-feedback">符合規則</div>
+							<div class="invalid-feedback">需包含大小字母、數字、特殊符號、8個字符</div>
+							<font color="red" size="-1">${ErrorMsg.passwordError}</font>
+						</div>
+						<div class="form-group w-50 mx-auto">
+							<p class="text-secondary">確認密碼</p>
+							<input type="password" id="cPwdId"
+								class="form-control myCpwdClass" value="${param.memberPassword}"
+								name="password1" required>
+							<!-- 								pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}" -->
+							<div id="cPwdValid" class="valid-feedback">密碼相符</div>
+							<div id="cPwdInvalid" class="invalid-feedback">密碼不相同</div>
+							<font color="red" size="-1">${MsgMap.passwordError}${MsgMap.errorPassword1Empty}</font>
+						</div>
+					</div>
+					<div class="modal-footer justify-content-center">
+						<button type="submit" class="btn btn-secondary"
+							onclick="myFunction()">送出</button>
+						<c:if test="${empty MsgMap}">
+							<div id="snackbar">修改成功</div>
+						</c:if>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 	<!-- footer -->
 	<jsp:include page="/fragment/footer.jsp"></jsp:include>
 
@@ -177,24 +281,40 @@ input[type="submit"]:disabled {
 		integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
 		crossorigin="anonymous"></script>
 	<script>
-      $("#show_image").click(function (e) {
-        document.getElementById("image_file").click();
-      });
+		$("#show_image").click(function(e) {
+			document.getElementById("image_file").click();
+		});
 
-      $("#image_file").on("change", function (event) {
-        const file = event.target.files[0];
-        let readFile = new FileReader();
-        readFile.readAsDataURL(file);
-        readFile.addEventListener("load", function (e) {
-          let image = document.getElementById("show_image");
-          image.src = this.result;
+		$("#image_file").on("change", function(event) {
+			const file = event.target.files[0];
+			let readFile = new FileReader();
+			readFile.readAsDataURL(file);
+			readFile.addEventListener("load", function(e) {
+				let image = document.getElementById("show_image");
+				image.src = this.result;
 
-          // image.width = 500 ;
-          image.style.maxWidth = "350px"; //css屬性
-          image.style.maxHeight = "350px";
-        });
-      });
-    </script>
+				// image.width = 500 ;
+				image.style.maxWidth = "350px"; //css屬性
+				image.style.maxHeight = "350px";
+			});
+		});
+	</script>
+	<c:if test="${empty MsgMap}">
+		<script>
+		function myFunction() {
+			var x = document.getElementById("snackbar");
+			x.className = "show";
+			setTimeout(function() {
+				x.className = x.className.replace("show", "");
+			}, 3000);
+		}
+	</script>
+	</c:if>
+	<c:if test="${!empty MsgMap}">
+		<script>
+			$('#staticBackdrop').modal('show')
+		</script>
+	</c:if>
 </body>
 
 </html>
