@@ -107,9 +107,10 @@
 
             </div>
             <div class="col-12 publish ">
-                     <button class="btn text-white bg-primary  " onclick="window.location.href='talkContent.jsp'">發帖</i></a></button>
+                     <button class="btn text-white bg-primary  " onclick="window.location.href='talkContent.jsp'">發帖</a></button>
                 <nav aria-label="Page navigation" class="publishitem">
                     <ul class="pagination justify-content-end ">
+
                       <c:if test="${pageNo > 3}">
                       <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/forum/talktop.do?pageNo=1">1</a></li>
                       <li class="page-item mt-2"><a href=""><i class="fas fa-caret-left"></i><i class="fas fa-caret-left"></i><i class="fas fa-caret-left"></i><i class="fas fa-caret-left"></i><i class="fas fa-caret-left"></i></a></li>
