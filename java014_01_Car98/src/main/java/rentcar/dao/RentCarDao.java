@@ -17,5 +17,7 @@ public interface RentCarDao {
 	
 	public void setConnection(Connection con);
 
+//	List<RentCarBean> getRentCarByDistrict(String district);
+
 
 }

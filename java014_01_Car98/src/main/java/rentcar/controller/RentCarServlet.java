@@ -3,7 +3,9 @@ package rentcar.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -43,18 +45,37 @@ public class RentCarServlet extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		//先取出session物件
-		HttpSession session = request.getSession(); 
-//		
-//		// 如果session物件不存在， 不要建立新的Session物件，直接傳回 null，請使用者登入
-//		if (session == null) {
-//			response.sendRedirect(response.encodeRedirectURL(
-//					request.getContextPath() + "BSlogin.jsp"));
-//			return;
-//		}
+		HttpSession session = request.getSession(false); 
 		
+		// 如果舊的session物件不存在， 不要建立新的Session物件，直接傳回 null，請使用者登入
+		if (session == null) {
+			response.sendRedirect(response.encodeRedirectURL(
+					request.getContextPath() + "/login/BSlogin.jsp"));
+			return;
+		}
+		
+		// 取出存放在session物件內的RentCarBean物件
+		RentCarBean rcb = (RentCarBean)session.getAttribute("RentCarBean");
+		
+		// 如果找不到RentCarBean物件，就新建一個
+		if (rcb == null) {
+			rcb = new RentCarBean();
+			// 並將此新建RentCarBean的物件放到session物件內，成為它的屬性物件
+			session.setAttribute("queryRent", rcb);
+			}
+		
+		// 1. 讀取使用者輸入查詢的資料
+		String city = request.getParameter("city");
+		String district = request.getParameter("district") + "區";
+		
+		// 2. 進行必要的資料轉換
+		
+		// 3. 檢查資料
+		
+		// 4. 進行商業邏輯運算
 		RentCarService rentCarservice = new RentCarServiceImpl();
 		
-		//這裡建立功能：將查詢的結果，可能轉成緯經度和GSON，然後再顯示在地圖上
+		// 5.依照商業邏輯運算的結果，來挑選適當的
 		RequestDispatcher rd = request.getRequestDispatcher("carRent.jsp");
 		rd.forward(request, response);
 		return;

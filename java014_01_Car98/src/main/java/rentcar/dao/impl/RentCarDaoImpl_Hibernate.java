@@ -22,7 +22,7 @@ public class RentCarDaoImpl_Hibernate implements RentCarDao {
 	}
 
 	@Override
-	public List<RentCarBean> getAllRentCars() {
+	public List<RentCarBean> getAllRentCars() {		//取得所有租車資料
 		String hql = "FROM RentCarBean";
 		Session session = factory.getCurrentSession();
 		List<RentCarBean> rentCarBean = session.createQuery(hql).list();
@@ -30,12 +30,22 @@ public class RentCarDaoImpl_Hibernate implements RentCarDao {
 	}
 	
 	@Override
-	public RentCarBean getRentCar() {
+	public RentCarBean getRentCar() {				//取得單筆租車資料(第?筆)
 		String hql = "FROM RentCarBean";
 		Session session = factory.getCurrentSession();
 		RentCarBean rentcarbean = (RentCarBean) session.createQuery(hql).list().get(0);
 		return rentcarbean;
 	}
+	
+//	@Override
+//	public List<RentCarBean> getRentCarByDistrict(String district) {	//取得符合地區的資料(經過使用者篩選)
+//		String hql = "FROM RentCarBean WHERE district = :district";
+//		Session session = factory.getCurrentSession();
+//		List<RentCarBean> rentcarbean = session.createQuery(hql).list();
+//		return rentcarbean;
+//	}
+	
+	
 	
 	@Override
 	public void setConnection(Connection conn) {

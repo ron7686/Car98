@@ -23,7 +23,10 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
     integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous" />
   <link rel="stylesheet" href="../css/BSRent.css">
-  <script src="http://maps.google.com/maps/api/js"></script>
+<!--   <script src="http://maps.google.com/maps/api/js"></script> -->
+<script
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQYmuo5h9pGY0c83EpRPJKTSUoLsk64FA&callback=initMap"
+	async defer></script>
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
   
   <style>
@@ -57,6 +60,11 @@
       background-attachment: fixed;
       background-repeat: no-repeat;
       background-size: cover;
+    }
+    
+    #map{
+    height:500px;
+    width:100%;
     }
   </style>
   
@@ -150,11 +158,24 @@
             </select>
           </form>
         </div>
-        <div class="col-md-12 text-white">
-          <iframe src="https://maps.google.com?output=embed&q=北科大" width="100%" height="460">
-          </iframe>
-          <!-- <div  class="col-12" id="map" style="width: 800px;height: 600px;"> -->
-        </div>
+        
+        				<div id="map"></div>
+				<script>
+					function initMap() {
+						var uluru = {
+							lat : 25.042464,
+							lng : 121.533795
+						};
+						var map = new google.maps.Map(document.getElementById('map'), {
+							zoom : 17,
+							center : uluru
+						});
+						var marker = new google.maps.Marker({
+							position : uluru,
+							map : map
+						});
+					}
+				</script>
 
       </div>
 
