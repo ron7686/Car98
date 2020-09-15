@@ -1,8 +1,10 @@
 package talk.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
@@ -26,6 +28,7 @@ public class CommentServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		int floor=2;
 		Map<String, String> errorMessage = new HashMap<>();
 		request.setAttribute("ErrorMsgKey", errorMessage);
 		request.setCharacterEncoding("UTF-8");
@@ -38,14 +41,14 @@ public class CommentServlet extends HttpServlet {
 			errorMessage.put("TextEmptyError", "請輸入內文");
 		}
 		if (errorMessage.isEmpty()) {
-			CommentBean cb = new CommentBean(postId, memId, Comtext, new Date(), comLike);
+			CommentBean cb = new CommentBean(postId, Comtext, new Date(), comLike);
 			try {
 				CommentService service=new CommentService();
-
-
-//				service.persist(cb);
 				service.insertCom(cb);
-				request.setAttribute("CommentBean", cb);
+				List<CommentBean> resultList = new ArrayList<>();
+				resultList = service.selectCom();
+				request.setAttribute("CommentBean", resultList);
+				request.setAttribute("floor", floor);
 				RequestDispatcher rd = request.getRequestDispatcher("/forum/talktalk.jsp");
 				rd.forward(request, response);
 				return;

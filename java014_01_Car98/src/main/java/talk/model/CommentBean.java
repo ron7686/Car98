@@ -33,18 +33,9 @@ public class CommentBean implements Serializable{
 	public CommentBean() {
 		super();
 	}
-	public CommentBean(Integer ComID,Integer PostID,Integer MemID ,String Comtext,Date ComTime,Integer ComLike) {		
-		this.ComID = ComID;
+	public CommentBean(Integer PostID,String Comtext,Date ComTime,Integer ComLike) {				
 		this.PostID = PostID;
-		this.MemID = MemID;
-		this.Comtext = Comtext;
-		this.ComTime = ComTime;
-		this.ComLike = ComLike;
-	} 
-	
-	public CommentBean(Integer PostID,Integer MemID ,String Comtext,Date ComTime,Integer ComLike) {				
-		this.PostID = PostID;
-		this.MemID = MemID;
+		
 		this.Comtext = Comtext;
 		this.ComTime = ComTime;
 		this.ComLike = ComLike;

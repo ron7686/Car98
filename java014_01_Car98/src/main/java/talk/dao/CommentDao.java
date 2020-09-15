@@ -1,5 +1,7 @@
 package talk.dao;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -7,7 +9,7 @@ import org.hibernate.Transaction;
 import talk.model.CommentBean;
 import talk.util.HibernateUtils;
 
-public class CommentDao  {
+public class CommentDao {
 	SessionFactory factory;
 
 	public CommentDao() {
@@ -37,5 +39,14 @@ public class CommentDao  {
 		n++;
 		return n;
 
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<CommentBean> selectCom() {
+		Session session = factory.getCurrentSession();
+		List<CommentBean> list = null;
+		String hql = "FROM CommentBean";
+		list = session.createQuery(hql).getResultList();
+		return list;
 	}
 }
