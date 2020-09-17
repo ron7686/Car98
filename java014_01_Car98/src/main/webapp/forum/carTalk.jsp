@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<% String path=request.getContextPath(); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -112,25 +113,25 @@
                     <ul class="pagination justify-content-end ">
 
                       <c:if test="${pageNo > 3}">
-                      <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/forum/talktop.do?pageNo=1">1</a></li>
+                      <li class="page-item"><a class="page-link" href="<%=path %>/forum/talktop.do?pageNo=1">1</a></li>
                       <li class="page-item mt-2"><a href=""><i class="fas fa-caret-left"></i><i class="fas fa-caret-left"></i><i class="fas fa-caret-left"></i><i class="fas fa-caret-left"></i><i class="fas fa-caret-left"></i></a></li>
                       	</c:if>
                       	<c:if test="${pageNo > 2}">
-                      <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/forum/talktop.do?pageNo=${pageNo-2}">${pageNo-2}</a></li>
+                      <li class="page-item"><a class="page-link" href="<%=path %>/forum/talktop.do?pageNo=${pageNo-2}">${pageNo-2}</a></li>
                       	</c:if>
                       	<c:if test="${pageNo > 1}">
-                      <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/forum/talktop.do?pageNo=${pageNo-1}">${pageNo-1}</a></li>
+                      <li class="page-item"><a class="page-link" href="<%=path %>/forum/talktop.do?pageNo=${pageNo-1}">${pageNo-1}</a></li>
                      	</c:if>
                       <li class="page-item active"><a class="page-link" href="#">${pageNo}</a></li>
                       <c:if test="${pageNo < lastPage}">
-                      <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/forum/talktop.do?pageNo=${pageNo+1}">${pageNo+1}</a></li>
+                      <li class="page-item"><a class="page-link" href="<%=path %>/forum/talktop.do?pageNo=${pageNo+1}">${pageNo+1}</a></li>
                       </c:if>
                       <c:if test="${pageNo+1 < lastPage}">
-                      <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/forum/talktop.do?pageNo=${pageNo+2}">${pageNo+2}</a></li>
+                      <li class="page-item"><a class="page-link" href="<%=path %>/forum/talktop.do?pageNo=${pageNo+2}">${pageNo+2}</a></li>
                       </c:if>
                       <c:if test="${pageNo+2 < lastPage}">
                       <li class="page-item mt-2"><a href=""><i class="fas fa-caret-right"></i><i class="fas fa-caret-right"></i><i class="fas fa-caret-right"></i><i class="fas fa-caret-right"></i><i class="fas fa-caret-right"></i></a></li>
-                      <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/forum/talktop.do?pageNo=${lastpage}">${lastPage}</a></li>
+                      <li class="page-item"><a class="page-link" href="<%=path %>/forum/talktop.do?pageNo=${lastPage}">${lastPage}</a></li>
                    	  </c:if>
                     </ul>
                   </nav>
@@ -179,7 +180,7 @@
 				  <tr>
                         <td class="sort "><a href=""><i class="fab fa-discourse"></i>討論</a></td>
                         <td class="pic"><img src="https://picsum.photos/id/231/100/50" alt=""></td>
-                        <th class="title itemtitle"><a class="subtitle" href="${pageContext.request.contextPath}/TalkTalkServlet?postID=${aBean.postID}">${aBean.postTitle}</a></th>
+                        <th class="title itemtitle"><a class="subtitle" href="<%=path %>/TalkTalkServlet?postID=${aBean.postID}">${aBean.postTitle}</a></th>
                         <td class="author"><a class="talkname" href="#">RonLee</a><br>2020/09/20 </td>
                         <td class="respon"><a class="subrespon" href="">131</a><br>15443</td>
                         <td class="lastupdate"><a class="talkname" href="">WayneChen</a><br><a  class="time" href="">昨天10:43pm</a></td>
