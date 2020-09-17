@@ -1,5 +1,6 @@
 package talk.service.Impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -58,5 +59,64 @@ public class CommentServiceImpl implements CommentServicee {
 		}
 		return list;
 	}
+
+	@Override
+	public int updateMemCom(String comText, Date comTime, Integer memId, Integer postId, Integer comId) {
+		int n = 0;
+		Session session = factory.getCurrentSession();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			n = dao.updateMemCom(comText,comTime,memId,postId,comId);
+			n++;
+			tx.commit();
+		} catch (Exception e) {
+			if (tx != null) {
+				tx.rollback();
+			}
+			e.printStackTrace();
+		}
+		return n;
+	}
+
+	@Override
+	public int updateComByPk(CommentBean commentBean) {
+		int n = 0;
+		Session session = factory.getCurrentSession();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			n = dao.updateComByPk(commentBean);
+			n++;
+			tx.commit();
+		} catch (Exception e) {
+			if (tx != null) {
+				tx.rollback();
+			}
+			e.printStackTrace();
+		}
+		return n;
+	}
+
+	@Override
+	public int deleteComByPk(Integer comId) {
+		int n = 0;
+		Session session = factory.getCurrentSession();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			n = dao.deleteComByPk(comId);
+			n++;
+			tx.commit();
+		} catch (Exception e) {
+			if (tx != null) {
+				tx.rollback();
+			}
+			e.printStackTrace();
+		}
+		return n;
+	}
+	
+	
 
 }

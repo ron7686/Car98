@@ -1,5 +1,6 @@
 package talk.dao.Impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -11,21 +12,20 @@ import talk.model.CommentBean;
 import talk.util.HibernateUtils;
 
 public class CommentDaoImpl implements CommentDao {
-	
+
 	SessionFactory factory;
 
 	public CommentDaoImpl() {
 		factory = HibernateUtils.getSessionFactory();
 	}
-	
 
 	@Override
-	public void persist(CommentBean cb) {
+	public void persist(CommentBean commentBean) {
 		Session session = factory.getCurrentSession();
 		Transaction tx = null;
 		try {
 			tx = session.beginTransaction();
-			session.persist(cb);
+			session.persist(commentBean);
 			tx.commit();
 		} catch (Exception e) {
 			if (tx != null) {
@@ -53,6 +53,38 @@ public class CommentDaoImpl implements CommentDao {
 		String hql = "FROM CommentBean";
 		list = session.createQuery(hql).getResultList();
 		return list;
+	}
+
+	@Override
+	public int updateMemCom(String comText, Date comTime, Integer memId, Integer postId, Integer comId) {
+		Session session = factory.getCurrentSession();
+		String hql = "UPDATE CommentBean SET comText = comText +: comText, comTime+: comTime"
+				+ "WHERE comId =: comId AND postId =: postId AND memId =: memId";
+		int n = 0;
+		session.createQuery(hql).setParameter("comText", comText).setParameter("comTime", comTime)
+				.setParameter("comId", comId).setParameter("postId", postId).setParameter("memId", memId);
+		n++;
+		return n;
+	}
+
+	@Override
+	public int updateComByPk(CommentBean commentBean) {
+		Integer n = 0;
+		Session session = factory.getCurrentSession();
+		session.saveOrUpdate(commentBean);
+	    n++;
+		return n;
+	}
+
+	@Override
+	public int deleteComByPk(Integer comId) {
+		Integer n = 0;
+		Session session = factory.getCurrentSession();
+		CommentBean commentbean = session.get(CommentBean.class, comId);
+		session.delete(commentbean);
+		n++;
+		return n;
+		
 	}
 
 }

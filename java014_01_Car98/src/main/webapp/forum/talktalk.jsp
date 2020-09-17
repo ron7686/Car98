@@ -157,6 +157,8 @@ body {
 						<li id="like1" button class="fas fa-thumbs-up fa-2x" type="button">12</li>
 						<li id="hate1" button class="fas fa-thumbs-down fa-2x"
 							type="button">1</li>
+						<button id="updateButton" >編輯</button>
+						<a id="deleteButton" href="${pageContext.request.contextPath}/forum/deleteCom.do">刪除</a>
 					</ul>
 				</div>
 			</div>
