@@ -16,8 +16,8 @@ import javax.servlet.http.HttpSession;
 
 import talk.model.CommentBean;
 import talk.model.TalkBean;
-import talk.service.CommentService;
 import talk.service.TalkService;
+import talk.service.Impl.CommentServiceImpl;
 
 @WebServlet("/TalkTalkServlet")
 public class TalkTalkServlet extends HttpServlet {
@@ -47,7 +47,7 @@ public class TalkTalkServlet extends HttpServlet {
 		TalkBean tb = ts.selectOne(postID);
 		session.setAttribute("TalkBean", tb);
 		try {
-			CommentService service = new CommentService();
+			CommentServiceImpl service = new CommentServiceImpl();
 
 			List<CommentBean> resultList = new ArrayList<>();
 			resultList = service.selectCom();

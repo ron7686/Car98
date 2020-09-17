@@ -1,4 +1,4 @@
-package talk.service;
+package talk.service.Impl;
 
 import java.util.List;
 
@@ -7,15 +7,17 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import talk.dao.CommentDao;
+import talk.dao.Impl.CommentDaoImpl;
 import talk.model.CommentBean;
+import talk.service.CommentServicee;
 import talk.util.HibernateUtils;
 
-public class CommentService {
+public class CommentServiceImpl implements CommentServicee {
 	CommentDao dao;
 	SessionFactory factory;
 
-	public CommentService() {
-		dao = new CommentDao();
+	public CommentServiceImpl() {
+		dao = new CommentDaoImpl();
 		factory = HibernateUtils.getSessionFactory();
 	}
 

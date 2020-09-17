@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import talk.model.CommentBean;
-import talk.service.CommentService;
+import talk.service.Impl.CommentServiceImpl;
 
 @WebServlet("/forum/comment.do")
 public class CommentServlet extends HttpServlet {
@@ -43,7 +43,7 @@ public class CommentServlet extends HttpServlet {
 		if (errorMessage.isEmpty()) {
 			CommentBean cb = new CommentBean(postId, Comtext, new Date(), comLike);
 			try {
-				CommentService service=new CommentService();
+				CommentServiceImpl service=new CommentServiceImpl();
 				service.insertCom(cb);
 				List<CommentBean> resultList = new ArrayList<>();
 				resultList = service.selectCom();
