@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import _01_register.model.MemberBean;
 import talk.model.TalkBean;
 import talk.service.TalkService;
 
@@ -24,7 +25,10 @@ public class TalktopServlet extends HttpServlet {
 	}
     
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
+		request.setCharacterEncoding("UTF-8");
+		HttpSession session = request.getSession(false);
+		MemberBean mb = (MemberBean) session.getAttribute("LoginOK");
+		
 		try {
 			pageNo=Integer.valueOf(request.getParameter("pageNo"));
 		} catch (NumberFormatException e) {
@@ -40,7 +44,7 @@ public class TalktopServlet extends HttpServlet {
 		List<TalkBean> li=ts.select(pageNo);
 		session.setAttribute("lastPage", lastPage);
 		session.setAttribute("abean", li);
-		
+		session.setAttribute("memberBean", mb);
 		
 		RequestDispatcher rd=request.getRequestDispatcher("/forum/carTalk.jsp");
 		rd.forward(request, response);
