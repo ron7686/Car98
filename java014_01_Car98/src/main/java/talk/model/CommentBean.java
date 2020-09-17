@@ -17,70 +17,70 @@ public class CommentBean implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer ComID;
+    private Integer comId;
 	
 	@Column(name="PostID")
-    private Integer PostID;
+    private Integer postId;
 	@Column(name="MemID")
-    private Integer MemID;
-	@Column(name="Comtext")
-    private String Comtext;
+    private Integer memId;
+	@Column(name="ComText")
+    private String comText;
 	@Column(name="ComTime")
-    private Date ComTime;
+    private Date comTime;
 	@Column(name="ComLike")
-    private Integer ComLike;
+    private Integer comLike;
 	
 	public CommentBean() {
 		super();
 	}
-	public CommentBean(Integer PostID,String Comtext,Date ComTime,Integer ComLike) {				
-		this.PostID = PostID;
+	public CommentBean(Integer postId,String comText,Date comTime,Integer comLike) {				
+		this.postId = postId;
 		
-		this.Comtext = Comtext;
-		this.ComTime = ComTime;
-		this.ComLike = ComLike;
+		this.comText = comText;
+		this.comTime = comTime;
+		this.comLike = comLike;
 	} 
 	
     
-	public Integer getComID() {
-		return ComID;
+	public Integer getComId() {
+		return comId;
 	}
-	public void setComID(Integer comID) {
-		ComID = comID;
+	public void setComId(Integer comId) {
+		this.comId = comId;
 	}
-	public Integer getPostID() {
-		return PostID;
+	public Integer getPostId() {
+		return postId;
 	}
-	public void setPostID(Integer postID) {
-		PostID = postID;
+	public void setPostId(Integer postId) {
+		this.postId = postId;
 	}
-	public Integer getMemID() {
-		return MemID;
+	public Integer getMemId() {
+		return memId;
 	}
-	public void setMemID(Integer memID) {
-		MemID = memID;
+	public void setMemId(Integer memId) {
+		this.memId = memId;
 	}
-	public String getComtext() {
-		return Comtext;
+	public String getComText() {
+		return comText;
 	}
-	public void setComtext(String comtext) {
-		Comtext = comtext;
+	public void setComText(String comText) {
+		this.comText = comText;
 	}
 	public Date getComTime() {
-		return ComTime;
+		return comTime;
 	}
 	public void setComTime(Date comTime) {
-		ComTime = comTime;
+		this.comTime = comTime;
 	}
 	public Integer getComLike() {
-		return ComLike;
+		return comLike;
 	}
 	public void setComLike(Integer comLike) {
-		ComLike = comLike;
+		this.comLike = comLike;
 	}	
 	@Override
 	public String toString() {
-		return "CommentBean [ComID=" + ComID + ", PostID=" + PostID + ", MemID=" + MemID + ", Comtext=" + Comtext
-				+ ", ComTime=" + ComTime + ", ComLike=" + ComLike +  "]";
+		return "CommentBean [comId=" + comId + ", postId=" + postId + ", memId=" + memId + ", comText=" + comText
+				+ ", comTime=" + comTime + ", comLike=" + comLike +  "]";
 	}
 }

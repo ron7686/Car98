@@ -142,14 +142,14 @@ body {
 			<!-- 文章內容 -->
 			<div class="col-10">
 				<ul class="article-information">
-					<li class="floor">${comment.comID}樓<br>
+					<li class="floor">${comment.comId}樓<br>
 					<a href="#">發表於 ${comment.comTime}</a></li>
 
 					<li class="gp">讚12</li>
 					<li class="bp">噓18</li>
 				</ul>
 				<div class="col-12 article-content">
-					${comment.comtext}<br>
+					${comment.comText}<br>
 				</div>
 				<!-- 按讚功能 -->
 				<div class="col-12 article-mood">

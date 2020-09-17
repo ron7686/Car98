@@ -32,16 +32,16 @@ public class CommentServlet extends HttpServlet {
 		Map<String, String> errorMessage = new HashMap<>();
 		request.setAttribute("ErrorMsgKey", errorMessage);
 		request.setCharacterEncoding("UTF-8");
-		Integer ComID = null;
-		String Comtext = request.getParameter("comments");
+		Integer comId = null;
+		String comText = request.getParameter("comments");
 		Integer postId = 1;
 		Integer memId = 36;
 		Integer comLike = 6;
-		if (Comtext == null || Comtext.trim().length() == 0) {
+		if (comText == null || comText.trim().length() == 0) {
 			errorMessage.put("TextEmptyError", "請輸入內文");
 		}
 		if (errorMessage.isEmpty()) {
-			CommentBean cb = new CommentBean(postId, Comtext, new Date(), comLike);
+			CommentBean cb = new CommentBean(postId, comText, new Date(), comLike);
 			try {
 				CommentServiceImpl service=new CommentServiceImpl();
 				service.insertCom(cb);
