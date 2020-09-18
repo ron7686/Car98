@@ -43,13 +43,13 @@ public class CommentServiceImpl implements CommentServicee {
 		return n;
 	}
 
-	public List<CommentBean> selectCom() {
+	public List<CommentBean> selectCom(Integer postId) {
 		List<CommentBean> list = null;
 		Session session = factory.getCurrentSession();
 		Transaction tx = null;
 		try {
 			tx = session.beginTransaction();
-			list = dao.selectCom();
+			list = dao.selectCom(postId);
 			tx.commit();
 		} catch (Exception e) {
 			if (tx != null) {
@@ -115,6 +115,24 @@ public class CommentServiceImpl implements CommentServicee {
 			e.printStackTrace();
 		}
 		return n;
+	}
+
+	@Override
+	public CommentBean selectComByPk(Integer comId) {
+		CommentBean commentbean = null;
+		Session session = factory.getCurrentSession();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			commentbean = dao.selectComByPk(comId);
+			tx.commit();
+		} catch (Exception e) {
+			if (tx != null) {
+				tx.rollback();
+			}
+			e.printStackTrace();
+		}
+		return commentbean;
 	}
 	
 	

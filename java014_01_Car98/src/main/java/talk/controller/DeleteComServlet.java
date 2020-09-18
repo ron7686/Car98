@@ -21,7 +21,7 @@ import talk.service.Impl.CommentServiceImpl;
 
 
 @WebServlet("/forum/deleteCom.do")
-public class deleteComServlet extends HttpServlet {
+public class DeleteComServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	
@@ -35,17 +35,9 @@ public class deleteComServlet extends HttpServlet {
 		Map<String, String> errorMessage = new HashMap<>();
 		request.setAttribute("ErrorMsgKey", errorMessage);
 		request.setCharacterEncoding("UTF-8");
-		int postID;
-		Integer comId = 3; 
-//		try {
-//			postID = Integer.valueOf(request.getParameter("postID"));
-//		} catch (NumberFormatException e) {
-//			postID = 1;
-//		}
-//		session.setAttribute("postID", postID);
-//		TalkService ts = new TalkService();
-//		TalkBean tb = ts.selectOne(postID);
-//		session.setAttribute("TalkBean", tb);
+		String comIdStr = request.getParameter("comId");
+		Integer comId = Integer.valueOf(comIdStr) ; 
+
 		try {
 			CommentServiceImpl service = new CommentServiceImpl();
 		    int n = 0;

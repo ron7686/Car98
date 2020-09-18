@@ -19,39 +19,30 @@ import talk.model.TalkBean;
 import talk.service.TalkService;
 import talk.service.Impl.CommentServiceImpl;
 
-@WebServlet("/TalkTalkServlet")
-public class TalkTalkServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+@WebServlet("/forum/updateCom.do")
+public class UpdateComServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	
+       
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
+
 	
-	
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		Map<String, String> errorMessage = new HashMap<>();
 		request.setAttribute("ErrorMsgKey", errorMessage);
 		request.setCharacterEncoding("UTF-8");
-		int postID;
-		try {
-			postID = Integer.valueOf(request.getParameter("postID"));
-		} catch (NumberFormatException e) {
-			postID = 1;
-		}
-		session.setAttribute("postID", postID);
-		TalkService ts = new TalkService();
-		TalkBean tb = ts.selectOne(postID);
-		session.setAttribute("TalkBean", tb);
+		String comIdStr = request.getParameter("comId");
+		Integer comId = Integer.valueOf(comIdStr) ; 
+		CommentBean commentBean = null;
 		try {
 			CommentServiceImpl service = new CommentServiceImpl();
-
-			List<CommentBean> resultList = new ArrayList<>();
-			resultList = service.selectCom(postID);
-			request.setAttribute("CommentBean", resultList);
+		    int n = 0;
+			n = service.updateComByPk(commentBean);
 			RequestDispatcher rd = request.getRequestDispatcher("/forum/talktalk.jsp");
 			rd.forward(request, response);
 			return;
