@@ -5,7 +5,7 @@ import java.util.List;
 
 import talk.model.CommentBean;
 
-public interface CommentServicee {
+public interface CommentService {
 
 	void persist(CommentBean cb);
 

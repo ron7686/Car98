@@ -10,10 +10,10 @@ import org.hibernate.Transaction;
 import talk.dao.CommentDao;
 import talk.dao.Impl.CommentDaoImpl;
 import talk.model.CommentBean;
-import talk.service.CommentServicee;
+import talk.service.CommentService;
 import talk.util.HibernateUtils;
 
-public class CommentServiceImpl implements CommentServicee {
+public class CommentServiceImpl implements CommentService {
 	CommentDao dao;
 	SessionFactory factory;
 
@@ -22,10 +22,12 @@ public class CommentServiceImpl implements CommentServicee {
 		factory = HibernateUtils.getSessionFactory();
 	}
 
+	@Override
 	public void persist(CommentBean cb) {
 		dao.persist(cb);
 	}
 
+	@Override
 	public int insertCom(CommentBean commentBean) {
 		int n = 0;
 		Session session = factory.getCurrentSession();
@@ -43,6 +45,7 @@ public class CommentServiceImpl implements CommentServicee {
 		return n;
 	}
 
+	@Override
 	public List<CommentBean> selectCom(Integer postId) {
 		List<CommentBean> list = null;
 		Session session = factory.getCurrentSession();
@@ -134,7 +137,5 @@ public class CommentServiceImpl implements CommentServicee {
 		}
 		return commentbean;
 	}
-	
-	
 
 }

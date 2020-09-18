@@ -37,6 +37,7 @@ public class UpdateComServlet extends HttpServlet {
 		request.setAttribute("ErrorMsgKey", errorMessage);
 		request.setCharacterEncoding("UTF-8");
 		String comIdStr = request.getParameter("comId");
+		System.out.println(comIdStr);
 		Integer comId = Integer.valueOf(comIdStr) ; 
 		CommentBean commentBean = null;
 		try {
